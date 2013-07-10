@@ -1,5 +1,5 @@
 /**
- * Handles functionality of image gallery on single blog posts
+ * Handles functionality of image gallery on single blog posts.
  *
  * @author Justin Worsdale
  */
