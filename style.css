@@ -803,3 +803,21 @@ footer.entry-meta a:focus {
 .entry-gallery > ul > li > a {
 	
 }
+
+.jw-gallery,
+.jw-gallery > ul {
+	margin: 0;
+	padding: 0;
+	white-space: nowrap;
+}
+
+.jw-gallery > ul > li {
+	display: inline-block;
+	*display: inline;
+	zoom: 1;
+	margin-left: 10px;
+}
+
+.jw-gallery > ul > li:first-child {
+	margin-left: 0;
+}

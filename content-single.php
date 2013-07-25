@@ -6,6 +6,14 @@
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	
+	<header class="entry-header">
+		<h1 class="entry-title"><?php the_title(); ?></h1>
+
+		<div class="entry-meta">
+			<?php jw_posted_on(); ?>
+		</div><!-- .entry-meta -->
+	</header><!-- .entry-header -->
+	
 	<div class="entry-gallery">
 		<div class="hero-container">
 			<?php
@@ -14,19 +22,8 @@
 				}
 			?>
 		</div>
-	<?php
-
-		echo(do_shortcode('[images link="true" parent_wrap="ul" child_wrap="li"]'));
-	?>
 	</div>
-	<header class="entry-header">
-		<h1 class="entry-title"><?php the_title(); ?></h1>
-
-		<div class="entry-meta">
-			<?php jw_posted_on(); ?>
-		</div><!-- .entry-meta -->
-	</header><!-- .entry-header -->
-
+	
 	<div class="entry-content">
 		<?php the_content(); ?>
 		<?php

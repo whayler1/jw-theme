@@ -71,7 +71,7 @@ function jw_setup() {
 	/**
 	 * Enable support for Post Formats
 	 */
-	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link' ) );
+	add_theme_support( 'post-formats', array( 'aside', 'image', 'video', 'quote', 'link', 'gallery' ) );
 }
 endif; // jw_setup
 add_action( 'after_setup_theme', 'jw_setup' );
@@ -168,57 +168,137 @@ add_action( 'wp_enqueue_scripts', 'jw_scripts' );
  */
 //require( get_template_directory() . '/inc/custom-header.php' );
 
+/**
+ * Override gallery shortcode to be much better
+ */
 
-/*
-Plugin Name: WKS Images Shortcode
-Plugin URI: http://www.webkitstudio.com/wordpress-plugins/wks-images-shortcode
-Description: The built-in gallery shortcode outputs a lot of extra code, which can be difficult to customize. The built-in gallery shortcode also adds css to your page. This alternative shortcode will output the images as a simple list, and is more semantic. The list can be styled through your theme's style.css file. There are several attributes, see the plugin's website for details.
-Version: 1.0.0
-Author: WebKit Studio
-Author URI: http://www.webkitstudio.com/wordpress-plugins/
-*/
+remove_shortcode('gallery', 'gallery_shortcode'); // removes the original shortcode
+add_shortcode('gallery', 'jw_gallery_shortcode'); // add custom shortcode
 
-add_shortcode('images','image_listings');
+function jw_gallery_shortcode($attr) {
+	
+	$post = get_post();
 
-function image_listings($atts, $content = null)
-{
-	extract(shortcode_atts(array(
-		'small_image' => 'thumbnail',
-		'large_image' => 'large',
-		'captions' => '',
-		'link' => '',
-		'link_title' => '',
-		'lightbox_group' => '',
-		'class' => '',
-		'parent_wrap' => 'div',
-		'child_wrap' => '',
-		'id' => ''
-		), $atts));
+	static $instance = 0;
+	$instance++;
 
-	global $post;
-	$images = get_posts( 'post_type=attachment&post_mime_type=image&numberposts=-1&post_parent='.$post->ID.'&orderby=menu_order&order=ASC' );
-	if ( empty($images) ) {
-		echo '<p>No images found</p>';
-	} else {
-		$id = ( $id != '' ) ? ' id="'.$id.'"' : '';
-		$class = ( $class != '' ) ? ' class="'.$class.'"' : '';
-		$html = ($parent_wrap!='')?"<{$parent_wrap}{$id}{$class}>":'';
-		$lightbox = ($lightbox_group=='')?'':' rel="lightbox['.$lightbox_group.']"';
-		foreach ( $images as $image ) {
-			//$image_title = ($link_title=='true')?' title="'.ucwords(str_replace('-',' ',$image->post_title)).'"':'';
-			$alt = ($link_title=='true')?' alt="'.ucwords(str_replace('-',' ',$image->post_title)).'"':'';
-			$image_alt = ($alt!='')?' alt="'.$alt.'"':'';
-			$lrg_image = wp_get_attachment_image_src($image->ID,$large_image);
-			$thumb_image = wp_get_attachment_image_src( $image->ID, $small_image );
-			$html .= ($child_wrap!='')?"<{$child_wrap}>":'';
-			$html .= ($link=='true')?"<a href=\"{$lrg_image[0]}\"{$lightbox} id=\"img-".$image->ID."\">":'';
-			$html .= '<img src="'.$thumb_image[0].'" width="'.$thumb_image[1].'" height="'.$thumb_image[2].'"'.$alt.' />';
-			$html .= ($link=='true')?"</a>":"";
-			$html .= ($captions=='true')?"<span>".ucwords(str_replace('-',' ',$image->post_title))."</span>":'';
-			$html .= ($child_wrap!='')?"</{$child_wrap}>":'';
-			$lrg_image = '';
-		}
-		$html .= ($parent_wrap!='')?"</{$parent_wrap}>":'';
-		return $html;
+	if ( ! empty( $attr['ids'] ) ) {
+		// 'ids' is explicitly ordered, unless you specify otherwise.
+		if ( empty( $attr['orderby'] ) )
+			$attr['orderby'] = 'post__in';
+		$attr['include'] = $attr['ids'];
 	}
+
+	// Allow plugins/themes to override the default gallery template.
+	$output = apply_filters('post_gallery', '', $attr);
+	if ( $output != '' )
+		return $output;
+
+	// We're trusting author input, so let's at least make sure it looks like a valid orderby statement
+	if ( isset( $attr['orderby'] ) ) {
+		$attr['orderby'] = sanitize_sql_orderby( $attr['orderby'] );
+		if ( !$attr['orderby'] )
+			unset( $attr['orderby'] );
+	}
+
+	extract(shortcode_atts(array(
+		'order'      => 'ASC',
+		'orderby'    => 'menu_order ID',
+		'id'         => $post->ID,
+		'itemtag'    => 'dl',
+		'icontag'    => 'dt',
+		'captiontag' => 'dd',
+		'columns'    => 3,
+		'size'       => 'thumbnail',
+		'include'    => '',
+		'exclude'    => ''
+	), $attr));
+
+	$id = intval($id);
+	if ( 'RAND' == $order )
+		$orderby = 'none';
+
+	if ( !empty($include) ) {
+		$_attachments = get_posts( array('include' => $include, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+
+		$attachments = array();
+		foreach ( $_attachments as $key => $val ) {
+			$attachments[$val->ID] = $_attachments[$key];
+		}
+	} elseif ( !empty($exclude) ) {
+		$attachments = get_children( array('post_parent' => $id, 'exclude' => $exclude, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	} else {
+		$attachments = get_children( array('post_parent' => $id, 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => $order, 'orderby' => $orderby) );
+	}
+
+	if ( empty($attachments) )
+		return '';
+
+	if ( is_feed() ) {
+		$output = "\n";
+		foreach ( $attachments as $att_id => $attachment )
+			$output .= wp_get_attachment_link($att_id, $size, true) . "\n";
+		return $output;
+	}
+
+	$itemtag = tag_escape($itemtag);
+	$captiontag = tag_escape($captiontag);
+	$icontag = tag_escape($icontag);
+	$valid_tags = wp_kses_allowed_html( 'post' );
+	if ( ! isset( $valid_tags[ $itemtag ] ) )
+		$itemtag = 'dl';
+	if ( ! isset( $valid_tags[ $captiontag ] ) )
+		$captiontag = 'dd';
+	if ( ! isset( $valid_tags[ $icontag ] ) )
+		$icontag = 'dt';
+
+	$columns = intval($columns);
+	$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
+	$float = is_rtl() ? 'right' : 'left';
+
+	$selector = "gallery-{$instance}";
+
+	$gallery_style = $gallery_div = '';
+	/*if ( apply_filters( 'use_default_gallery_style', true ) )
+		$gallery_style = "
+		<style type='text/css'>
+			#{$selector} {
+				margin: auto;
+			}
+			#{$selector} .gallery-item {
+				float: {$float};
+				margin-top: 10px;
+				text-align: center;
+				width: {$itemwidth}%;
+			}
+			#{$selector} img {
+				border: 2px solid #cfcfcf;
+			}
+			#{$selector} .gallery-caption {
+				margin-left: 0;
+			}
+		</style>
+		<!-- see gallery_shortcode() in wp-includes/media.php -->";*/
+	$size_class = sanitize_html_class( $size );
+	$gallery_div = "<div id='$selector' class='jw-gallery'><ul>";
+	$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+
+	$i = 0;
+	foreach ( $attachments as $id => $attachment ) {
+		//$link = isset($attr['link']) && 'file' == $attr['link'] ? wp_get_attachment_link($id, $size, false, false) : wp_get_attachment_link($id, $size, true, false);
+		
+		$image_attrs = wp_get_attachment_image_src( $id, $size );
+		$image_attrs_large = wp_get_attachment_image_src( $id, 'large' );
+		
+		$output .= "<li class='gallery-item'>";
+		//$output .= "$link";
+		$output .= '<a href="' . $image_attrs_large[0] . '"><img src="' . $image_attrs[0] . '"></a>';
+		$output .= "</li>";
+	}
+
+	$output .= "</ul></div>";
+
+	return $output;
 }
+
+
