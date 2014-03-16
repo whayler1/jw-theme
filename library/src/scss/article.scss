@@ -1,72 +1,124 @@
 
-article {
-	
-	&.post {
-		//padding-bottom: $pad-mobile;
-		margin-top: $pad-mobile;
-		border-bottom: 1px dotted $grey-light;
-		
-		&:first-child {
-			margin-top: 0;
-		}
-		
+.single {
+	article {
 		h1 {
-			font-size: 1.7em;
-		}
-		
-		p {
-			&:first-child {
-				//margin-top: 0;
+			margin: 0 0 $pad-mobile / 2;
+			
+			@media screen and (min-width: 768px) {
+				margin-bottom: $pad-desktop / 2;
 			}
 		}
 		
 		@media screen and (min-width: 768px) {
-			position: relative;
-			margin-top: $pad-desktop;
-			border-bottom: none;
-			
-			h1 {
-				margin: 0;
-			}
-			
 			.post-image {
-				display: block;
-				width: 59%;
-				font-size: 0;
-				line-height: 0;
-				border: 1px solid transparent;
-				
+				float: left;
+				margin: 0 $pad-desktop / 2 $pad-desktop / 2 0;
+			}
+			
+			.article-footer {
+				position: relative;
+				margin-top: $pad-desktop / 2;
+			}
+		}
+	}
+}
+
+article {
+	//padding-bottom: $pad-mobile;
+	margin-top: $pad-mobile;
+	border-bottom: 1px dotted $grey-light;
+	
+	&:first-child {
+		margin-top: 0;
+	}
+	
+	h1 {
+		font-size: 1.7em;
+		
+		a {
+			text-decoration: none;
+			
+			
+			&:active,
+			&:focus {
+				color: $grey-dark;
+			}
+			
+			@media screen and (min-width: 768px) {
 				&:hover {
-					border-color: $grey-light;
-				}
-				
-				img {
-					width: 100%;
-					height: auto;
+					color: $grey-dark;
 				}
 			}
 			
-			.copy-block {
+		}
+	}
+	
+	p {
+		&:first-child {
+			//margin-top: 0;
+		}
+	}
+	
+	ul, ol {
+		padding: 0;
+		//margin-left: $pad-desktop / 2;
+		
+		@media screen and (min-width: 768px) {
+			margin-left: $pad-desktop / 2;
+		}
+	}
+	
+	li {
+		//padding-left: 20px;
+		list-style-position: inside;
+	}
+	
+	@media screen and (min-width: 768px) {
+		position: relative;
+		margin-top: $pad-desktop;
+		border-bottom: none;
+		
+		h1 {
+			margin: 0;
+		}
+		
+		.post-image {
+			display: block;
+			width: 60%;
+			font-size: 0;
+			line-height: 0;
+			border: 1px solid transparent;
+			
+			&:hover {
+				border-color: $grey-light;
+			}
+			
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		
+		.copy-block {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 40%;
+			height: 100%;
+			
+			>div {
 				position: absolute;
-				right: 0;
 				top: 0;
-				width: 40%;
-				height: 100%;
-				
-				>div {
-					position: absolute;
-					top: 0;
-					left: 0;
-					right: 0;
-					bottom: 40px;
-					overflow: hidden;
-				}
-				
-				header,
-				section,
-				footer {
-					margin-left: $pad-desktop / 2;
-				}
+				left: 0;
+				right: 0;
+				bottom: 40px;
+				overflow: hidden;
+			}
+			
+			header,
+			section,
+			footer {
+				margin-left: $pad-desktop / 2;
 			}
 		}
 	}

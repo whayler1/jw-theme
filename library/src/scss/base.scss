@@ -31,7 +31,7 @@ html,body {
 }
 
 h1,h2,h3,h4,h5,h6 {
-	@include header-text;
+	@include font-headers;
 	font-weight: 400;
 	font-style: italic;
 	letter-spacing: -1px;
@@ -39,7 +39,7 @@ h1,h2,h3,h4,h5,h6 {
 	line-height: 1.1em;
 	
 	a {
-		@include header-text;
+		@include font-headers;
 		font-weight: 400;
 		font-style: italic;
 		letter-spacing: -1px;
@@ -61,7 +61,7 @@ h1,h2,h3,h4,h5,h6 {
 	}
 	
 	.time {
-		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		@include font-standard();
 		font-style: normal;
 		font-size: 0.5em;
 		font-weight: 200;
@@ -71,13 +71,19 @@ h1,h2,h3,h4,h5,h6 {
 	}
 }
 
-p,a,em,i,cite {
-	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+p,a,em,i,cite,ul,ol,li,span,code,.code,tr,td,table,tbody,div {
+	@include font-standard();
 	font-size: 14px;
 	color: $grey;
 	
 	a {
 		text-decoration: underline;
+		color: $grey-dim;
+	}
+	
+	@media screen and (min-width: 768px) {
+		font-size: 16px;
+		line-height: 1.3em;
 	}
 }
 a:focus,
@@ -106,7 +112,7 @@ img {
 }
 
 .more-link {
-	@include header-text;
+	@include font-headers;
 	color: $grey-dim;
 	text-decoration: none;
 	white-space: nowrap;

@@ -26,6 +26,9 @@ $sprite: url(#{$img-path}sprite.png);
 	background-size: 160px 450px;
 }
 
-@mixin header-text() {
+@mixin font-headers() {
 	font-family: "Old Standard TT",Times,serif;
+}
+@mixin font-standard() {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
