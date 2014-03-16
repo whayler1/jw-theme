@@ -21,6 +21,7 @@ bmConfig = {
 			srcScss + 'base.scss',
 			srcScss + 'social-list.scss',
 			srcScss + 'header.scss',
+			srcScss + 'footer.scss',
 			srcScss + 'article.scss'
 		]
 	};

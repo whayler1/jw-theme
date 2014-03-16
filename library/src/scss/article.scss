@@ -3,19 +3,29 @@ article {
 	
 	&.post {
 		//padding-bottom: $pad-mobile;
-		margin-bottom: $pad-mobile + 10px;
+		margin-top: $pad-mobile;
 		border-bottom: 1px dotted $grey-light;
+		
+		&:first-child {
+			margin-top: 0;
+		}
+		
+		@media screen and (min-width: 768px) {
+			margin-top: $pad-desktop;
+		}
 	}
 }
 
 .article-footer {
 	p {
 		color: lighten($grey, 20%);
+		font-weight: 200;
 	}
 	
 	a {
 		color: lighten($grey, 20%);
 		text-decoration: none;
+		font-weight: 200;
 		
 		&:focus,
 		&:active {

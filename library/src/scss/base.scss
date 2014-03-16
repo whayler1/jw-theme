@@ -22,7 +22,7 @@ html,body {
 	}
 	
 	>.content {
-		padding: 0 $pad-mobile;
+		padding: $pad-mobile $pad-mobile 0;
 		
 		@media screen and (min-width: 768px) {
 			padding: 0 $pad-desktop;
@@ -50,12 +50,12 @@ h1,h2,h3,h4,h5,h6 {
 		
 		&:focus,
 		&:active {
-			color: darken($grey-dark, 20%);
+			color: lighten($grey-dark, 20%);
 		}
 		
 		@media screen and (min-width: 768px) {
 			&:hover {
-				color: darken($grey-dark, 20%);
+				color: lighten($grey-dark, 20%);
 			}
 		}
 	}
