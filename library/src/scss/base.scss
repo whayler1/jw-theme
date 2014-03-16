@@ -117,3 +117,14 @@ img {
 	text-decoration: none;
 	white-space: nowrap;
 }
+
+.archive-title {
+	margin-top: 0;
+	color: $grey-dark;
+	
+	span {
+		font-size: 1em;
+		@include font-headers;
+		color: $grey-dim;
+	}
+}
