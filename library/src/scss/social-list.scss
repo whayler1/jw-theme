@@ -1,0 +1,61 @@
+.social-list {
+	
+	li {
+		display: inline-block;
+		margin: 0 0 0 10px;
+		
+		&:first-child {
+			margin-left: 0;
+		}
+		
+		a {
+			display: inline-block;
+			width: 25px;
+			height: 25px;
+			font-size: 0;
+			line-height: 0;
+			vertical-align: top;
+			
+			@include sprite(0, -50px);
+			
+			&:focus,
+			&:active {
+				background-position: 0 -75px;
+			}
+			
+			@media screen and (min-width: 768px) {
+				&:hover {
+					background-position: 0 -75px;
+				}
+			}
+			
+			&.git-hub {
+				background-position: -26px -50px;
+				&:focus,
+				&:active {
+					background-position: -26px -75px;
+				}
+				
+				@media screen and (min-width: 768px) {
+					&:hover {
+						background-position: -26px -75px;
+					}
+				}
+			}
+			
+			&.email {
+				background-position: -52px -50px;
+				&:focus,
+				&:active {
+					background-position: -52px -75px;
+				}
+				
+				@media screen and (min-width: 768px) {
+					&:hover {
+						background-position: -52px -75px;
+					}
+				}
+			}
+		}
+	}
+}

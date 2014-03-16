@@ -1,0 +1,118 @@
+header {
+	.social-list {
+		position: absolute;
+		right: $pad-mobile;
+		top: $pad-mobile;
+		
+		@media screen and (min-width: 768px) {
+			right: $pad-desktop;
+			top: $pad-desktop;
+		}
+	}
+	
+	ul {
+		margin: 0;
+		padding: 0;
+	}
+	
+	li {
+		list-style: none;
+		padding: 0;
+	}
+}
+
+.cat-list {
+	margin-top: $pad-mobile;
+	
+	li {
+		border-bottom: 1px solid $grey-light;
+		
+		&:first-child {
+			border-top: 1px solid $grey-light;
+		}
+		
+		a {
+			display: block;
+			font-size: 1.2em;
+			line-height: 1.1em;
+			padding: 0.5em 0;
+			margin: 0 0.5em;
+			text-decoration: none;
+			
+			@include sprite(right, -341px);
+			
+			&:focus,
+			&:active {
+				color: $grey-dark;
+				background-position: right -383px;
+			}
+		}
+	}
+	
+	@media screen and (min-width: 768px) {
+		position: absolute;
+		bottom: $pad-desktop;
+		right: $pad-desktop;
+		margin-top: 0;
+		
+		li {
+			display: inline-block;
+			border: none;
+			margin-left: 20px;
+			
+			&:first-child {
+				border: none;
+				margin-left: 0;
+			}
+			
+			a {
+				display: inline-block;
+				padding: 0;
+				margin: 0;
+				font-weight: 200;
+				background: none;
+			}
+		}
+	}
+}
+
+.jstn-lockup {
+	display: inline-block;
+	width: 80px;
+	height: 25px;
+	font-size: 0;
+	line-height: 0;
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+	
+	a {
+		display: inline-block;
+		font-size: 0;
+		line-height: 0;
+		width: 100%;
+		height: 100%;
+		@include sprite(0, 0);
+		
+		&:focus,
+		&:active {
+			background-position: 0 -25px;
+		}
+	}
+	
+	@media screen and (min-width: 768px) {
+		width: 155px;
+		height: 50px;
+		background-position: 0 -150px;
+		
+		a {
+			background-position: 0 -150px;
+			
+			&:hover,
+			&:focus,
+			&:active {
+				background-position: 0 -200px;
+			}
+		}
+	}
+}

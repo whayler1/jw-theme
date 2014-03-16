@@ -1,0 +1,56 @@
+<!doctype html>
+<html <?php language_attributes(); ?>>
+
+	<head>
+		<meta charset="utf-8">
+
+		<?php // Google Chrome Frame for IE ?>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+		<title><?php wp_title(''); ?></title>
+
+		<?php // mobile meta (hooray!) ?>
+		<meta name="HandheldFriendly" content="True">
+		<meta name="MobileOptimized" content="320">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+
+		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
+		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-icon-touch.png">
+		<link rel="icon" href="<?php echo get_template_directory_uri(); ?>/favicon.png">
+		<!--[if IE]>
+			<link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/favicon.ico">
+		<![endif]-->
+		<?php // or, set /favicon.ico for IE10 win ?>
+		<meta name="msapplication-TileColor" content="#fff">
+		<meta name="msapplication-TileImage" content="<?php echo get_template_directory_uri(); ?>/library/images/win8-tile-icon.png">
+
+		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
+
+		<?php // wordpress head functions ?>
+		<?php wp_head(); ?>
+		<?php // end of wordpress head ?>
+
+		<?php // drop Google Analytics Here ?>
+		<?php // end analytics ?>
+
+	</head>
+
+	<body <?php body_class(); ?>>
+
+		<div id="container" class="container">
+
+			<header class="header" role="banner">
+
+				<h1 class="jstn-lockup"><a href="<?php echo home_url(); ?>" rel="nofollow">JSTN</a></h1>
+
+				<ul class="social-list">
+					<li><a class="linked-in" href="http://www.linkedin.com/pub/justin-worsdale/39/317/960" target="_blank" title="view justin's linked in">linked in</a></li><li><a class="git-hub" href="https://github.com/whayler1" target="_blank" title="view justin's git hub">git hub</a></li><li><a class="email" href="mailto:jstn@jstn.name" target="_blank" title="email justin">email</a></li>
+				</ul>
+				
+				<?php $categories = get_categories(); ?>
+				
+				<ul class="cat-list">
+				<?php foreach($categories as $category): ?><li><a href="<?php echo "/category/" .$category->slug; ?>"><?php echo $category->name; ?></a></li><?php endforeach; ?>
+				</ul>
+
+			</header>

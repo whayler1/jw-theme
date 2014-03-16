@@ -1,0 +1,89 @@
+html,body {
+	
+}
+
+.container {
+	//max-width: 1200 - ($pad-mobile * 2);
+	
+	@media screen and (min-width: 768px) {
+		max-width: 1200px;
+		margin: 0 auto;
+	}
+
+	>header,
+	>footer,
+	>.content {
+		position: relative;
+		padding: $pad-mobile;
+		
+		@media screen and (min-width: 768px) {
+			padding: $pad-desktop;
+		}
+	}
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: "Old Standard TT",Times,serif;
+	font-weight: 400;
+	font-style: italic;
+	letter-spacing: -1px;
+	color: $grey-dark;
+	line-height: 1.1em;
+	
+	a {
+		font-family: "Old Standard TT",Times,serif;
+		font-weight: 400;
+		font-style: italic;
+		letter-spacing: -1px;
+		color: $grey-dark;
+		line-height: 1.1em;
+		text-decoration: none;
+		font-size: inherit;
+		
+		&:focus,
+		&:active {
+			color: darken($grey-dark, 20%);
+		}
+		
+		@media screen and (min-width: 768px) {
+			&:hover {
+				color: darken($grey-dark, 20%);
+			}
+		}
+	}
+	
+	.time {
+		font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+		font-style: normal;
+		font-size: 0.5em;
+		font-weight: 200;
+		white-space: nowrap;
+		letter-spacing: normal;
+		color: lighten($grey, 10% );
+	}
+}
+
+p,a,em,i,cite {
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	color: $grey;
+	
+	a {
+		text-decoration: underline;
+	}
+}
+a:focus,
+a:active {
+	color: $magenta;
+}
+
+@media screen and (min-width: 768px) {
+	a:hover {
+		color: $magenta;
+	}
+}
+
+img {
+	width: 100%;
+	height: auto;
+}

@@ -1,0 +1,25 @@
+
+
+// vars
+
+$pad-mobile: 20px;
+$pad-desktop: 50px;
+
+$grey: #666;
+
+$grey-dark: #333;
+
+$grey-light: #dedede;
+
+$magenta: #ff62b0;
+
+$img-path: '/wp-content/themes/bones/library/images/';
+
+$sprite: url(#{$img-path}sprite.png);
+
+// mixins
+
+@mixin sprite($x, $y, $bg-color: transparent) {
+	background: $sprite $x $y no-repeat $bg-color;
+	background-size: 160px 450px;
+}
