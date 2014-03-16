@@ -9,6 +9,8 @@ $grey: #999;
 
 $grey-dark: #333;
 
+$grey-dim: #666;
+
 $grey-light: #dedede;
 
 $magenta: #ff62b0;
@@ -22,4 +24,8 @@ $sprite: url(#{$img-path}sprite.png);
 @mixin sprite($x, $y, $bg-color: transparent) {
 	background: $sprite $x $y no-repeat $bg-color;
 	background-size: 160px 450px;
+}
+
+@mixin header-text() {
+	font-family: "Old Standard TT",Times,serif;
 }

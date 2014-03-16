@@ -372,4 +372,6 @@ function bones_get_the_author_posts_link() {
 	return $link;
 }
 
+$more_text = '&#8230;Read More';
+
 ?>

@@ -15,15 +15,19 @@
 								<a class="post-image" href="<?php the_permalink(); ?>"><img src="<?php echo($postImage[0] ); ?>"></a>
 								
 								<div class="copy-block">
-									<header class="article-header">
-	
-										<h1 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a><span class="time"><?php printf( __( ' &mdash; <time class="updated" datetime="%1$s" pubdate>%2$s</time>'), get_the_time('Y-m-j'), get_the_time(get_option('date_format'))); ?></span></h1>
+									<div>
+										<header class="article-header">
+		
+											<h1 class="h2"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a><span class="time"><?php printf( __( ' &mdash; <time class="updated" datetime="%1$s" pubdate>%2$s</time>'), get_the_time('Y-m-j'), get_the_time(get_option('date_format'))); ?></span></h1>
+											
+										</header>
+		
+										<section class="entry-content clearfix">
+											<?php the_content($more_text); ?>
+										</section>
 										
-									</header>
-	
-									<section class="entry-content clearfix">
-										<?php the_content(); ?>
-									</section>
+										<div class="overflow-fix"></div>
+									</div>
 	
 									<footer class="article-footer">
 										<p><?php the_tags( '<span class="tags-title">' . __( '', 'bonestheme' ) . '</span> ', ', ', '' ); ?> | <span class="categories"><?php printf( __( '%1$s') , get_the_category_list(', ')); ?></span></p>
