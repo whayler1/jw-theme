@@ -19,6 +19,8 @@ $img-path: '/wp-content/themes/jw-theme/library/images/';
 
 $sprite: url(#{$img-path}sprite.png);
 
+$sprite-nobackgroundsize: url(#{$img-path}sprite-nobackgroundsize.png);
+
 // mixins
 
 @mixin sprite($x, $y, $bg-color: transparent) {

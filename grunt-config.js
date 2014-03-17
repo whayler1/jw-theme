@@ -8,7 +8,8 @@ var bmConfig,
 bmConfig = {
 		js: {
 			libs: [
-				libScripts + 'html5shiv/html5shiv.js'
+				libScripts + 'html5shiv/html5shiv.js',
+				libScripts + 'modernizr/modernizr.custom.04420.js'
 			],
 			src: [
 				srcScripts + 'jstn.js'

@@ -1,3 +1,9 @@
+.no-backgroundsize {
+	.social-list li a {
+		background-image: $sprite-nobackgroundsize;
+	}
+}
+
 .social-list {
 	
 	li {

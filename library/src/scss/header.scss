@@ -1,3 +1,61 @@
+.no-backgroundsize {
+	.cat-list li a {
+		background-image: $sprite-nobackgroundsize;
+	}
+	.jstn-lockup a {
+		background-image: $sprite-nobackgroundsize;
+	}
+	
+	header {
+		.social-list {
+			right: $pad-desktop;
+			top: $pad-desktop;
+		}
+	}
+	
+	.cat-list {
+		position: absolute;
+		bottom: $pad-desktop;
+		right: $pad-desktop;
+		margin-top: 0;
+		
+		li {
+			display: inline-block;
+			border: none;
+			margin-left: 20px;
+			
+			&:first-child {
+				border: none;
+				margin-left: 0;
+			}
+			
+			a {
+				display: inline-block;
+				padding: 0;
+				margin: 0;
+				font-weight: 200;
+				background: none;
+			}
+		}
+	}
+	
+	.jstn-lockup {
+		width: 155px;
+		height: 50px;
+		background-position: 0 -150px;
+		
+		a {
+			background-position: 0 -150px;
+			
+			&:hover,
+			&:focus,
+			&:active {
+				background-position: 0 -200px;
+			}
+		}
+	}
+}
+
 header {
 	.social-list {
 		position: absolute;

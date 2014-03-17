@@ -1,3 +1,38 @@
+.no-backgroundsize {
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		
+		>header,
+		>footer,
+		>.content {
+			padding: $pad-desktop;
+			min-width: 800px;
+		}
+		
+		>.content {
+			padding: 0 $pad-desktop;
+		}
+	}
+	
+	p,a,em,i,cite,ul,ol,li,span,code,.code,tr,td,table,tbody,div {
+		font-size: 16px;
+		line-height: 1.3em;
+	}
+	
+	h1,h2,h3,h4,h5,h6 {
+		a {
+			&:hover {
+				color: lighten($grey-dark, 20%);
+			}
+		}
+	}
+	
+	a:hover {
+		color: $magenta;
+	}
+}
+
 html,body {
 	
 }
