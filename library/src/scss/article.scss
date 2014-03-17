@@ -1,3 +1,95 @@
+.no-background-size {
+	.single {
+		article {
+			.post-image {
+				float: left;
+				margin: 0 $pad-desktop / 2 $pad-desktop / 2 0;
+			}
+			
+			.article-footer {
+				position: relative;
+				margin-top: $pad-desktop / 2;
+			}
+			
+			h1 {
+				margin-bottom: $pad-desktop / 2;
+			}
+		}
+	}
+	
+	article {
+		
+		h1 a {
+			&:hover {
+				color: $grey-dark;
+			}
+		}
+		position: relative;
+		margin-top: $pad-desktop;
+		border-bottom: none;
+		
+		h1 {
+			margin: 0;
+		}
+		
+		.post-image {
+			display: block;
+			width: 60%;
+			font-size: 0;
+			line-height: 0;
+			border: 1px solid transparent;
+			
+			&:hover {
+				border-color: $grey-light;
+			}
+			
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+		
+		.copy-block {
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: 40%;
+			height: 100%;
+			
+			>div {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 40px;
+				overflow: hidden;
+			}
+			
+			header,
+			section,
+			footer {
+				margin-left: $pad-desktop / 2;
+			}
+		}
+	}
+	
+	.article-footer {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		left: 0;
+		
+		p {
+			margin: 0;
+		}
+		
+		a {
+			&:hover {
+				color: $magenta;
+			}
+		}
+	}
+}
 
 .single {
 	article {
@@ -19,6 +111,10 @@
 				position: relative;
 				margin-top: $pad-desktop / 2;
 			}
+		}
+		
+		ul, ol {
+			margin-left: $pad-desktop / 2;
 		}
 	}
 }

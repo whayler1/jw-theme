@@ -1,6 +1,22 @@
 .no-backgroundsize {
 	.social-list li a {
 		background-image: $sprite-nobackgroundsize;
+		
+		&:hover {
+			background-position: 0 -75px;
+		}
+		
+		&.git-hub {
+			&:hover {
+				background-position: -26px -75px;
+			}
+		}
+		
+		&.email {
+			&:hover {
+				background-position: -52px -75px;
+			}
+		}
 	}
 }
 
