@@ -207,7 +207,7 @@ article {
 				top: 0;
 				left: 0;
 				right: 0;
-				bottom: 40px;
+				bottom: 0px;
 				overflow: hidden;
 			}
 			
@@ -227,6 +227,10 @@ article {
 		bottom: 0;
 		width: 100%;
 		left: 0;
+		z-index: 100;
+		background: url(#{$img-path}wht-gradient.png) left top repeat-x transparent;
+		padding-top: 15px;
+		
 	}
 	
 	p {
@@ -235,6 +239,8 @@ article {
 		
 		@media screen and (min-width: 768px) {
 			margin: 0;
+			padding-top: 10px;
+			background: white;
 		}
 	}
 	

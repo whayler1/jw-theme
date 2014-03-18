@@ -25,8 +25,6 @@
 										<section class="entry-content clearfix">
 											<?php the_content($more_text); ?>
 										</section>
-										
-										<div class="overflow-fix"></div>
 									</div>
 	
 									<footer class="article-footer">

@@ -67,17 +67,11 @@ html,body {
 
 h1,h2,h3,h4,h5,h6 {
 	@include font-headers;
-	font-weight: 400;
-	font-style: italic;
-	letter-spacing: -1px;
 	color: $grey-dark;
 	line-height: 1.1em;
 	
 	a {
 		@include font-headers;
-		font-weight: 400;
-		font-style: italic;
-		letter-spacing: -1px;
 		color: $grey-dark;
 		line-height: 1.1em;
 		text-decoration: none;
@@ -137,6 +131,7 @@ img {
 	height: auto;
 }
 
+/*
 .overflow-fix {
 	position: absolute;
 	left: 0;
@@ -145,6 +140,7 @@ img {
 	height: 15px;
 	background: url(/wp-content/themes/jw-theme/library/images/wht-gradient.png) repeat-x transparent;
 }
+*/
 
 .more-link {
 	@include font-headers;
