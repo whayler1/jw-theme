@@ -4,7 +4,9 @@
 		margin: 0 auto;
 		
 		>header,
+		>.header,
 		>footer,
+		>.footer
 		>.content {
 			padding: $pad-desktop;
 			min-width: 800px;
@@ -21,6 +23,7 @@
 	}
 	
 	h1,h2,h3,h4,h5,h6 {
+		font-size: inherit;
 		a {
 			&:hover {
 				color: lighten($grey-dark, 20%);

@@ -17,7 +17,8 @@
 		}
 	}
 	
-	article {
+	article,
+	.article {
 		
 		h1 a {
 			&:hover {
@@ -66,8 +67,10 @@
 			}
 			
 			header,
+			>.header,
 			section,
-			footer {
+			footer,
+			.footer {
 				margin-left: $pad-desktop / 2;
 			}
 		}

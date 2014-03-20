@@ -6,7 +6,8 @@
 		background-image: $sprite-nobackgroundsize;
 	}
 	
-	header {
+	header,
+	.header {
 		.social-list {
 			right: $pad-desktop;
 			top: $pad-desktop;
