@@ -123,6 +123,7 @@ SCRIPTS & ENQUEUEING
 // loading modernizr and jquery, and reply script
 function bones_scripts_and_styles() {
 	global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
+	global $wp_scripts;
 	if (!is_admin()) {
 
 		// modernizr (without media query polyfill)
@@ -144,6 +145,7 @@ function bones_scripts_and_styles() {
 
 		//adding scripts file in the footer
 		wp_register_script( 'jstn-js', '/wp-content/themes/jw-theme/library/dist/js/jstn.js', array(), '', true );
+		wp_register_script('html5shiv', '/wp-content/themes/jw-theme/library/dist/js/html5shiv.js', array(), '', false);
 
 		// enqueue styles and scripts
 		//wp_enqueue_script( 'bones-modernizr' );
@@ -152,6 +154,7 @@ function bones_scripts_and_styles() {
 		//wp_enqueue_style( 'bones-ie-only' );
 
 		//$wp_styles->add_data( 'bones-ie-only', 'conditional', 'lt IE 9' ); // add conditional wrapper around ie stylesheet
+		$wp_scripts->add_data('html5shiv', 'conditional', 'lt IE 9');
 
 		/*
 		I recommend using a plugin to call jQuery
@@ -160,6 +163,7 @@ function bones_scripts_and_styles() {
 		*/
 		//wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'jstn-js' );
+		wp_enqueue_script( 'html5shiv' );
 
 	}
 }
