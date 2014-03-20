@@ -29,7 +29,7 @@ $sprite-nobackgroundsize: url(#{$img-path}sprite-nobackgroundsize.png);
 }
 
 @mixin font-headers() {
-	font-family: "Old Standard TT",Times,serif;
+	font-family: "Old Standard TT",Georgia,serif;
 	font-weight: 400;
 	font-style: italic;
 	letter-spacing: -1px;

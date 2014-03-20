@@ -1,4 +1,4 @@
-.no-background-size {
+.no-backgroundsize {
 	.single {
 		article {
 			.post-image {
@@ -17,10 +17,11 @@
 		}
 	}
 	
-	article,
-	.article {
+	article {
 		
 		h1 a {
+			font-size: inherit;
+			line-height: inherit;
 			&:hover {
 				color: $grey-dark;
 			}
@@ -30,6 +31,8 @@
 		border-bottom: none;
 		
 		h1 {
+			font-size: 1.7em;
+			line-height: 1.1em;
 			margin: 0;
 		}
 		
