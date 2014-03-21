@@ -7,12 +7,13 @@
 		<?php // Google Chrome Frame for IE ?>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-		<title><?php wp_title(''); ?></title>
+		<title><?php wp_title('|', true, 'right'); bloginfo('name'); ?></title>
 
 		<?php // mobile meta (hooray!) ?>
 		<meta name="HandheldFriendly" content="True">
 		<meta name="MobileOptimized" content="320">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+		<meta name="description" content="<?php bloginfo('description'); ?>">
 
 		<?php // icons & favicons (for more: http://www.jonathantneal.com/blog/understand-the-favicon/) ?>
 		<link rel="apple-touch-icon" href="<?php echo get_template_directory_uri(); ?>/library/images/apple-icon-touch.png">
@@ -26,7 +27,11 @@
 
 		<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>">
 
+		<?php // wordpress head functions ?>
 		<?php wp_head(); ?>
+		<?php // end of wordpress head ?>
+
+		<?php // drop Google Analytics Here ?>
 		<script>
 		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -37,6 +42,7 @@
 		  ga('send', 'pageview');
 		
 		</script>
+		<?php // end analytics ?>
 
 	</head>
 
@@ -46,7 +52,7 @@
 
 			<header class="header" role="banner">
 
-				<h1 class="jstn-lockup"><a href="<?php echo home_url(); ?>" rel="nofollow">JSTN</a></h1>
+				<h1 class="jstn-lockup"><a href="<?php echo home_url(); ?>" rel="nofollow"><acronym title="Justin Dean Worsdale">JSTN</acronym></a></h1>
 
 				<ul class="social-list">
 					<li><a class="linked-in" href="http://www.linkedin.com/pub/justin-worsdale/39/317/960" target="_blank" title="view justin's linked in">linked in</a></li><li><a class="git-hub" href="https://github.com/whayler1" target="_blank" title="view justin's git hub">git hub</a></li><li><a class="email" href="mailto:jstn@jstn.name" target="_blank" title="email justin">email</a></li>
