@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 		
 		uglify: {
 			src: {
-				options: opts.uglify.prod,
+				options: opts.uglify.dev,
 				files: {
 					'library/dist/js/jstn.js': src.js.all
 				}
