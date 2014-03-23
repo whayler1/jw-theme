@@ -1,3 +1,13 @@
+function addEventListener(el, eventName, handler) {
+    el.addEventListener ? el.addEventListener(eventName, handler) : el.attachEvent("on" + eventName, function() {
+        handler.call(el);
+    });
+}
+
+function removeEventListener(el, eventName, handler) {
+    el.removeEventListener ? el.removeEventListener(eventName, handler) : el.detachEvent("on" + eventName, handler);
+}
+
 window.Modernizr = function(a, b, c) {
     function z(a) {
         j.cssText = a;
@@ -207,4 +217,38 @@ window.Modernizr = function(a, b, c) {
     };
 }(this, document), Modernizr.load = function() {
     yepnope.apply(window, [].slice.call(arguments, 0));
-};
+}, function(document, window) {
+    window.hasClass = function(el, className) {
+        return el.classList ? el.classList.contains(className) : new RegExp("(^| )" + className + "( |$)", "gi").test(el.className);
+    }, window.addClass = function(el, className) {
+        el.classList ? el.classList.add(className) : el.className += " " + className;
+    }, window.removeClass = function(el, className) {
+        el.classList ? el.classList.remove(className) : el.className = el.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " ");
+    };
+}(document, window);
+
+var JW = JW || {};
+
+!function() {
+    JW.consts = {
+        QUERY_DROPOWN: ".drop-down",
+        CLASS_EXPAND: "expand"
+    };
+}(document, window), function(JW, document) {
+    var _consts = JW.consts, _QUERY_DROPOWN = _consts.QUERY_DROPOWN, _CLASS_EXPAND = _consts.CLASS_EXPAND, _dropDown = function(el) {
+        var self = this;
+        self.el = el, self.init();
+    }, _init = function() {
+        for (var dropdowns = document.querySelectorAll(_QUERY_DROPOWN), i = 0; i < dropdowns.length; i++) new _dropDown(dropdowns[i]);
+    };
+    _dropDown.prototype = {
+        init: function() {
+            var self = this;
+            self.anchor = self.el.querySelector("a"), addEventListener(self.anchor, "click", self.onClick.bind(self));
+        },
+        onClick: function() {
+            var self = this, el = self.el;
+            hasClass(el, _CLASS_EXPAND) ? removeClass(el, _CLASS_EXPAND) : addClass(el, _CLASS_EXPAND);
+        }
+    }, _init();
+}(JW, document, window);

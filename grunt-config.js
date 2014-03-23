@@ -12,7 +12,11 @@ bmConfig = {
 				libScripts + 'modernizr/modernizr.custom.04420.js'
 			],
 			src: [
-				srcScripts + 'jstn.js'
+				utilScripts + 'class-manager.js',
+				utilScripts + 'add-event-listener.js',
+				utilScripts + 'remove-event-listener.js',
+				srcScripts + 'consts.js',
+				srcScripts + 'dropdown.js'
 			]
 		},
 		

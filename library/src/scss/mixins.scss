@@ -25,7 +25,7 @@ $sprite-nobackgroundsize: url(#{$img-path}sprite-nobackgroundsize.png);
 
 @mixin sprite($x, $y, $bg-color: transparent) {
 	background: $sprite $x $y no-repeat $bg-color;
-	background-size: 160px 450px;
+	background-size: 160px 600px;
 }
 
 @mixin font-headers() {

@@ -1,4 +1,4 @@
-.no-backgroundsize {
+.no-backgroundsize { 
 	.single {
 		article {
 			.post-image {
@@ -109,8 +109,7 @@
 		
 		@media screen and (min-width: 768px) {
 			.post-image {
-				float: left;
-				margin: 0 $pad-desktop / 2 $pad-desktop / 2 0;
+				
 			}
 			
 			.article-footer {
@@ -159,6 +158,13 @@ article {
 		&:first-child {
 			//margin-top: 0;
 		}
+		
+		em {
+			@include font-headers();
+			font-size: 1.5em;
+			line-height: 1.1em;
+			color: $grey-dark;
+		}
 	}
 	
 	ul, ol {
@@ -190,7 +196,9 @@ article {
 			font-size: 0;
 			line-height: 0;
 			border: 1px solid transparent;
-			
+			float: left;
+			margin: 0 $pad-desktop / 2 $pad-desktop / 2 0;
+
 			&:hover {
 				border-color: $grey-light;
 			}

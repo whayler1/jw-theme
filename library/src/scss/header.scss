@@ -79,8 +79,155 @@ header {
 		list-style: none;
 		padding: 0;
 	}
+	//border-bottom: 1px dotted $grey-light;
+	
+	@media screen and (min-width: 768px) {
+		
+	//	border-bottom: none;
+	}
 }
 
+nav {
+	margin-top: $pad-mobile;
+
+	li {
+		
+		a {
+			display: block;
+			font-size: 1.2em;
+			line-height: 1.1em;
+			padding: 0.5em 0;
+			margin: 0 0.5em;
+			text-decoration: none;
+			
+			@include sprite(right, -380px);
+			
+			&:focus,
+			&:active {
+				color: $grey-dark;
+				background-position: right -420px;
+			}
+		}
+	}
+	
+	>ul {
+		>li {
+			border-bottom: 1px solid $grey-light;
+			
+			&:first-child {
+				border-top: 1px solid $grey-light;
+			}
+			
+			&.drop-down {
+			
+				>a {
+					background-position: right -300px;
+					
+					&:focus,
+					&:active {
+						background-position: right -340px;
+					}
+				}
+				
+				&.expand {
+					
+					>a {
+						background-position: right -460px;
+						
+						&:focus,
+						&:active {
+							background-position: right -500px;
+						}
+					}
+					
+					>ul {
+						display: block;
+					}
+				}
+			}
+			
+			>ul {
+				display: none;
+				
+				>li {
+					border-top: 1px dotted $grey-light;
+					
+					a {
+						color: lighten($grey, 10%);
+					}
+				}
+			}
+		}
+	}
+	
+	@media screen and (min-width: 768px) {
+		position: absolute;
+		bottom: $pad-desktop;
+		right: $pad-desktop;
+		margin-top: 0;
+		
+		li {
+			display: inline-block;
+			//border: none;
+			margin-left: 20px;
+			
+			&:first-child {
+				//border: none;
+				margin-left: 0;
+			}
+			
+			a {
+				display: inline-block;
+				padding: 0;
+				margin: 0;
+				font-weight: 200;
+				background: none;
+			}
+		}
+		
+		>ul {
+			>li {
+				border: none;
+				
+				&:first-child {
+					border: none;
+				}
+				
+				&.drop-down {
+					>a {
+						display: none;
+					}
+					margin-left: 10px;
+					border-left: 1px solid $grey;
+				}
+				
+				&.expand {
+					>ul {
+						display: inline-block;
+						
+						>li {
+							
+						}
+					}
+				}
+				
+				>ul {
+					display: inline-block;
+					
+					>li {
+						border: none;
+						
+						&:first-child {
+							margin-left: 10px;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+/*
 .cat-list {
 	margin-top: $pad-mobile;
 	
@@ -135,6 +282,7 @@ header {
 		}
 	}
 }
+*/
 
 .jstn-lockup {
 	display: inline-block;

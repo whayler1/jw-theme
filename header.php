@@ -53,15 +53,25 @@
 			<header class="header" role="banner">
 
 				<h1 class="jstn-lockup"><a href="<?php echo home_url(); ?>" rel="nofollow"><acronym title="Justin Dean Worsdale">JSTN</acronym></a></h1>
-
+				
 				<ul class="social-list">
 					<li><a class="linked-in" href="http://www.linkedin.com/pub/justin-worsdale/39/317/960" target="_blank" title="view justin's linked in">linked in</a></li><li><a class="git-hub" href="https://github.com/whayler1" target="_blank" title="view justin's git hub">git hub</a></li><li><a class="email" href="mailto:jstn@jstn.name" target="_blank" title="email justin">email</a></li>
 				</ul>
-				
+								
 				<?php $categories = get_categories(); ?>
 				
-				<ul class="cat-list">
-				<?php foreach($categories as $category): ?><li><a href="<?php echo "/category/" .$category->slug; ?>"><?php echo $category->name; ?></a></li><?php endforeach; ?>
-				</ul>
-
+				<nav>
+					<ul class="page-list">
+						<li>
+							<a href="/about/">About</a>
+						</li>
+						<li class="drop-down">
+							<a href="javascript:void(0)">Categories</a>
+							<ul class="cat-list">
+							<?php foreach($categories as $category): ?><li><a href="<?php echo "/category/" .$category->slug; ?>"><?php echo $category->name; ?></a></li><?php endforeach; ?>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+				
 			</header>
