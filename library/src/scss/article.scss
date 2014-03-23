@@ -1,5 +1,6 @@
 .no-backgroundsize { 
-	.single {
+	.single,
+	.page {
 		article {
 			.post-image {
 				float: left;
@@ -97,7 +98,23 @@
 	}
 }
 
-.single {
+.blog,
+.archive,
+.search {
+	.article-footer {
+		@media screen and (min-width: 768px) {
+			
+			background: url(#{$img-path}wht-gradient.png) left top repeat-x transparent;
+		}
+	}
+	
+	p {
+		background: white;
+	}
+}
+
+.single,
+.page {
 	article {
 		h1 {
 			margin: 0 0 $pad-mobile / 2;
@@ -109,7 +126,7 @@
 		
 		@media screen and (min-width: 768px) {
 			.post-image {
-				
+				float: left;
 			}
 			
 			.article-footer {
@@ -122,6 +139,8 @@
 			margin-left: $pad-desktop / 2;
 		}
 	}
+	
+	
 }
 
 article {
@@ -196,7 +215,7 @@ article {
 			font-size: 0;
 			line-height: 0;
 			border: 1px solid transparent;
-			float: left;
+			//float: left;
 			margin: 0 $pad-desktop / 2 $pad-desktop / 2 0;
 
 			&:hover {
@@ -242,7 +261,7 @@ article {
 		width: 100%;
 		left: 0;
 		z-index: 100;
-		background: url(#{$img-path}wht-gradient.png) left top repeat-x transparent;
+		//background: url(#{$img-path}wht-gradient.png) left top repeat-x transparent;
 		padding-top: 15px;
 		
 	}
@@ -254,7 +273,7 @@ article {
 		@media screen and (min-width: 768px) {
 			margin: 0;
 			padding-top: 10px;
-			background: white;
+			//background: white;
 		}
 	}
 	

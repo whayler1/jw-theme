@@ -60,7 +60,7 @@
 								
 				<?php $categories = get_categories(); ?>
 				
-				<nav>
+				<nav class="site-nav">
 					<ul class="page-list">
 						<li>
 							<a href="/about/">About</a>

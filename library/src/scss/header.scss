@@ -87,7 +87,7 @@ header {
 	}
 }
 
-nav {
+.site-nav {
 	margin-top: $pad-mobile;
 
 	li {
@@ -216,6 +216,12 @@ nav {
 					
 					>li {
 						border: none;
+						
+						a {
+							&:hover {
+								color: $magenta;
+							}
+						}
 						
 						&:first-child {
 							margin-left: 10px;
