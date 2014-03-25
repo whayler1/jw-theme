@@ -161,4 +161,27 @@ function bones_wpsearch($form) {
 	return $form;
 } // don't remove this bracket!
 
+/************* SHORTCODE *********************/
+
+function write_img($atts) {
+	
+	return '<li><img alt="' . $atts[alt] . '" src="' . $atts[src] . '"></li>';
+}
+
+function write_carousel($atts, $content) {
+	
+	//$imgs = split(',', $atts[imgs]);
+	
+	ob_start();?>
+	<p>meow here I am $imgs[0]</p>
+	<ul>
+	<?php echo do_shortcode($content); ?>
+	</ul>
+	<?php 
+	return ob_get_clean();
+}
+
+add_shortcode('carousel', 'write_carousel');
+add_shortcode('img', 'write_img');
+
 ?>

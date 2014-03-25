@@ -378,4 +378,6 @@ function bones_get_the_author_posts_link() {
 
 $more_text = '&#8230;Read More';
 
+
+
 ?>

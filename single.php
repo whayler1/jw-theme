@@ -14,9 +14,12 @@
 								
 							</header>
 							
+							<?php if(get_post_format() === false): ?>
 							<?php $postImage = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' ); ?>
 							
 							<img class="post-image" src="<?php echo($postImage[0]); ?>">
+							
+							<?php endif; ?>
 							
 							<section class="entry-content clearfix">
 								<?php the_content(); ?>
