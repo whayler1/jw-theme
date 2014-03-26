@@ -54,6 +54,7 @@ $carousel-height-desktop: 700px;
 	.ui {
 		a {
 			position: absolute;
+			display: block;
 			top: 0;
 			left: 0;
 			width: $pad-mobile;

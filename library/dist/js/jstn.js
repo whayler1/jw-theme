@@ -251,4 +251,37 @@ var JW = JW || {};
             hasClass(el, _CLASS_EXPAND) ? removeClass(el, _CLASS_EXPAND) : addClass(el, _CLASS_EXPAND);
         }
     }, _init();
+}(JW, document, window), function(JW, document, window) {
+    var _carousels = (JW.consts, document.querySelectorAll(".carousel")), _NUM_PADMOBILE = 20, _NUM_PADDESKTOP = 50, _NUM_BREAKPOINT = 768, _carousel = function(el) {
+        var self = this;
+        self.el = el, self.init();
+    };
+    _carousel.prototype = {
+        init: function() {
+            var uiAs, self = this, el = self.el;
+            self.scrollArea = el.querySelector(".scroll-area"), self.ui = el.querySelector(".ui"), 
+            uiAs = self.ui.querySelectorAll("a"), self.btnLeft = uiAs[0], self.btnRight = uiAs[1], 
+            self.btnWidth = self.btnLeft.innerWidth, console.log("here", self.btnLeft, self.btnLeft.innerWidth), 
+            self.assessWidowWidth(), self.assessUiOn(), window.onresize = self.onResize.bind(self), 
+            addEventListener(self.scrollArea, "scroll", self.onScroll.bind(self));
+        },
+        onResize: function() {
+            var self = this;
+            self.assessWidowWidth();
+        },
+        onScroll: function() {
+            var self = this;
+            self.assessUiOn();
+        },
+        assessUiOn: function() {
+            var self = this;
+            console.log(self.scrollArea.scrollLeft);
+        },
+        assessWidowWidth: function() {
+            var windowWidth, self = this;
+            self.windowWidth = windowWidth = window.innerWidth, self.pad = _NUM_BREAKPOINT > windowWidth ? _NUM_PADMOBILE : _NUM_PADDESKTOP, 
+            console.log(windowWidth + "\n" + self.pad);
+        }
+    };
+    for (var i = 0; i < _carousels.length; i++) new _carousel(_carousels[i]);
 }(JW, document, window);
