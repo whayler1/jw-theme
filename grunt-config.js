@@ -16,7 +16,8 @@ bmConfig = {
 				utilScripts + 'add-event-listener.js',
 				utilScripts + 'remove-event-listener.js',
 				srcScripts + 'consts.js',
-				srcScripts + 'dropdown.js'
+				srcScripts + 'dropdown.js',
+				srcScripts + 'carousel.js'
 			]
 		},
 		
@@ -27,7 +28,8 @@ bmConfig = {
 			srcScss + 'social-list.scss',
 			srcScss + 'header.scss',
 			srcScss + 'footer.scss',
-			srcScss + 'article.scss'
+			srcScss + 'article.scss',
+			srcScss + 'carousel.scss'
 		]
 	};
 

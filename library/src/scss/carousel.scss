@@ -1,0 +1,101 @@
+$carousel-height-mobile: 300px;
+$carousel-height-desktop: 700px;
+
+.carousel {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: $carousel-height-mobile;
+	padding: 0 $pad-mobile;
+	margin-left: -$pad-mobile;
+	
+	.scroll-area {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		padding: 0 $pad-mobile;
+		overflow: auto;
+		-webkit-overflow-scrolling: touch;
+	}
+	
+	ul {
+		
+		margin: 0;
+		//padding: 0 $pad-desktop 0 0; 
+		white-space: nowrap;
+		font-size: 0;
+		line-height: 0;
+		height: $carousel-height-mobile;
+		//background: white;
+		
+		li {
+			display: inline-block;
+			//margin-left: $pad-desktop / 2;
+			//padding-right: $pad-mobile;
+			font-size: 0;
+			line-height: 0;
+			//width: 100%;
+			vertical-align: top;
+			height: 100%;
+			
+			img {
+				height: 100%;
+				width: auto;
+			}
+			
+			&:last-child {
+				margin-right: $pad-mobile;
+			}
+		}
+	}
+	
+	
+	.ui {
+		a {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: $pad-mobile;
+			height: $carousel-height-mobile;
+			//background: rgba(0,0,0,0.6);
+			@include wht-gradient-ltr;
+			@include transform(translateZ(0) );
+			
+			+a {
+				left: auto;
+				right: 0;
+				@include wht-gradient-rtl;
+			}
+		}
+	}
+	
+	@media screen and (min-width: 768px) {
+		padding: 0 $pad-desktop;
+		margin-left: -$pad-desktop;
+		height: $carousel-height-desktop;
+		
+		.scroll-area {
+			padding: 0 $pad-desktop;
+		}
+		
+		ul {
+			height: $carousel-height-desktop;
+			li {
+				//padding-right: $pad-desktop;
+				
+				&:last-child {
+					margin-right: $pad-desktop;
+				}
+			}
+		}
+		
+		.ui {
+			a {
+				width: $pad-desktop;
+				height: $carousel-height-desktop;
+			}
+			
+		}
+	}
+}

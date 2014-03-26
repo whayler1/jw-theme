@@ -173,10 +173,17 @@ function write_carousel($atts, $content) {
 	//$imgs = split(',', $atts[imgs]);
 	
 	ob_start();?>
-	<p>meow here I am $imgs[0]</p>
-	<ul>
-	<?php echo do_shortcode($content); ?>
-	</ul>
+	<div class="carousel">
+		<div class="scroll-area">
+			<ul>
+			<?php echo do_shortcode($content); ?>
+			</ul>
+		</div>
+		<div class="ui">
+			<a href="javascript:void"></a>
+			<a href="javascript:void"></a>
+		</div>
+	</div>
 	<?php 
 	return ob_get_clean();
 }
