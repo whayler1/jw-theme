@@ -232,7 +232,13 @@ var JW = JW || {};
 !function() {
     JW.consts = {
         QUERY_DROPOWN: ".drop-down",
-        CLASS_EXPAND: "expand"
+        QUERY_CAROUSEL: ".carousel",
+        CLASS_EXPAND: "expand",
+        NUM_PADMOBILE: 20,
+        NUM_PADDESKTOP: 50,
+        NUM_BREAKPOINT: 768,
+        STR_DESKTOP: "desktop",
+        STR_MOBILE: "mobile"
     };
 }(document, window), function(JW, document) {
     var _consts = JW.consts, _QUERY_DROPOWN = _consts.QUERY_DROPOWN, _CLASS_EXPAND = _consts.CLASS_EXPAND, _dropDown = function(el) {
@@ -252,10 +258,11 @@ var JW = JW || {};
         }
     }, _init();
 }(JW, document, window), function(JW, document, window) {
-    var _carousels = (JW.consts, document.querySelectorAll(".carousel")), _NUM_PADMOBILE = 20, _NUM_PADDESKTOP = 50, _NUM_BREAKPOINT = 768, _carousel = function(el) {
+    var _consts = JW.consts, _carousels = document.querySelectorAll(_consts.QUERY_CAROUSEL), _NUM_PADMOBILE = _consts.NUM_PADMOBILE, _NUM_PADDESKTOP = _consts.NUMPADDESKTOP, _NUM_BREAKPOINT = _consts.NUM_BREAKPOINT, _carousel = (_consts.STR_DESKTOP, 
+    _consts.STR_MOBILE, function(el) {
         var self = this;
         self.el = el, self.init();
-    };
+    });
     _carousel.prototype = {
         init: function() {
             var uiAs, self = this, el = self.el;
