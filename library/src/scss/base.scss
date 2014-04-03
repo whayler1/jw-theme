@@ -17,7 +17,7 @@
 	
 	p,a,em,i,cite,ul,ol,li,span,code,.code,tr,td,table,tbody,div {
 		font-size: 16px;
-		line-height: 1.3em;
+		line-height: 1.4em;
 	}
 	
 	h1,h2,h3,h4,h5,h6 {
@@ -49,7 +49,14 @@ p {
 		border-radius: 5px;
 		padding: 1px 5px;
 		font-family: monospace;
-		font-size: 0.95em;
+		font-size: 0.9em;
+		margin: 1px 0;
+		white-space: nowrap;
+		color: $grey-dim;
+	}
+	
+	i {
+		color: $grey-dim;
 	}
 }
 
@@ -128,7 +135,7 @@ p,a,em,i,cite,ul,ol,li,span,code,.code,tr,td,table,tbody,div {
 	
 	@media screen and (min-width: 768px) {
 		font-size: 16px;
-		line-height: 1.3em;
+		line-height: 1.4em;
 	}
 }
 a:focus,
