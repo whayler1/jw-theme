@@ -2,14 +2,14 @@
 	
 	var _consts = JW.consts,
 		
-		_carousels = document.querySelectorAll('.carousel'),
+		_carousels = document.querySelectorAll(_consts.QUERY_CAROUSEL),
 		
-		_NUM_PADMOBILE = 20,
-		_NUM_PADDESKTOP = 50,
-		_NUM_BREAKPOINT = 768,
+		_NUM_PADMOBILE = _consts.NUM_PADMOBILE,
+		_NUM_PADDESKTOP = _consts.NUMPADDESKTOP,
+		_NUM_BREAKPOINT = _consts.NUM_BREAKPOINT,
 		
-		_STR_DESKTOP = 'desktop',
-		_STR_MOBILE = 'mobile',
+		_STR_DESKTOP = _consts.STR_DESKTOP,
+		_STR_MOBILE = _consts.STR_MOBILE,
 		
 		//_window = window,
 		
