@@ -42,6 +42,17 @@ html,body {
 	
 }
 
+p {
+	code {
+		background: #fcfcfc;
+		border: 1px solid #f5eded;
+		border-radius: 5px;
+		padding: 1px 5px;
+		font-family: monospace;
+		font-size: 0.95em;
+	}
+}
+
 .container {
 	//max-width: 1200 - ($pad-mobile * 2);
 	
