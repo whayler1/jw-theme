@@ -50,9 +50,12 @@ p {
 		padding: 1px 5px;
 		font-family: monospace;
 		font-size: 0.9em;
-		margin: 1px 0;
-		white-space: nowrap;
+		line-height: 1.1em;
+		//margin: 1px 0;
 		color: $grey-dim;
+		@media screen and (min-width: 768px) {
+			white-space: nowrap;
+		}
 	}
 	
 	i {
@@ -126,6 +129,7 @@ h1,h2,h3,h4,h5,h6 {
 p,a,em,i,cite,ul,ol,li,span,code,.code,tr,td,table,tbody,div {
 	@include font-standard();
 	font-size: 14px;
+	line-height: 1.45em;
 	color: $grey;
 	
 	a {
@@ -164,6 +168,15 @@ img {
 	background: url(/wp-content/themes/jw-theme/library/images/wht-gradient.png) repeat-x transparent;
 }
 */
+
+.img-simple {
+	overflow: auto;
+	-webkit-overflow-scrolling: touch;
+	
+	img {
+		width: auto;
+	}
+}
 
 .more-link {
 	@include font-headers;
