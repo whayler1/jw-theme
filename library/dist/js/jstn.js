@@ -259,7 +259,7 @@ var JW = JW || {};
         }
     }, _init();
 }(JW, document, window), function(JW, document, window) {
-    var _consts = JW.consts, _carousels = document.querySelectorAll(_consts.QUERY_CAROUSEL), _NUM_PADMOBILE = _consts.NUM_PADMOBILE, _NUM_PADDESKTOP = _consts.NUMPADDESKTOP, _NUM_BREAKPOINT = _consts.NUM_BREAKPOINT, _CLASS_ON = (_consts.STR_DESKTOP, 
+    var _consts = JW.consts, _carousels = document.querySelectorAll(_consts.QUERY_CAROUSEL), _NUM_PADMOBILE = _consts.NUM_PADMOBILE, _NUM_PADDESKTOP = _consts.NUM_PADDESKTOP, _NUM_BREAKPOINT = _consts.NUM_BREAKPOINT, _CLASS_ON = (_consts.STR_DESKTOP, 
     _consts.STR_MOBILE, _consts.CLASS_ON), _carousel = function(el) {
         var self = this;
         self.el = el, self.init();
@@ -283,12 +283,13 @@ var JW = JW || {};
         },
         assessUiOn: function() {
             var self = this, scrollLeft = self.scrollArea.scrollLeft;
-            console.log("scrollLeft: " + scrollLeft), scrollLeft > 0 ? addClass(self.btnLeft, _CLASS_ON) : removeClass(self.btnLeft, _CLASS_ON);
+            console.log("scrollLeft: " + scrollLeft + "\nabsRight: " + self.absRight), scrollLeft > 0 ? addClass(self.btnLeft, _CLASS_ON) : removeClass(self.btnLeft, _CLASS_ON), 
+            scrollLeft < self.absRight ? addClass(self.btnRight, _CLASS_ON) : removeClass(self.btnRight, _CLASS_ON);
         },
         assessWidowWidth: function() {
-            var windowWidth, self = this;
-            self.windowWidth = windowWidth = window.innerWidth, self.pad = _NUM_BREAKPOINT > windowWidth ? _NUM_PADMOBILE : _NUM_PADDESKTOP, 
-            console.log(windowWidth + "\n" + self.pad, "\nul width: " + self.ul.innerWidth);
+            var windowWidth, self = this, lis = self.ul.querySelectorAll("li"), lisWidth = 0;
+            for (i = 0, self.windowWidth = windowWidth = window.innerWidth, self.pad = _NUM_BREAKPOINT > windowWidth ? _NUM_PADMOBILE : _NUM_PADDESKTOP; i < lis.length; i++) lisWidth += lis[i].offsetWidth;
+            self.absRight = lisWidth - self.ul.offsetWidth;
         }
     };
     for (var i = 0; i < _carousels.length; i++) new _carousel(_carousels[i]);

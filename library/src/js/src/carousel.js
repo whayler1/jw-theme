@@ -5,7 +5,7 @@
 		_carousels = document.querySelectorAll(_consts.QUERY_CAROUSEL),
 		
 		_NUM_PADMOBILE = _consts.NUM_PADMOBILE,
-		_NUM_PADDESKTOP = _consts.NUMPADDESKTOP,
+		_NUM_PADDESKTOP = _consts.NUM_PADDESKTOP,
 		_NUM_BREAKPOINT = _consts.NUM_BREAKPOINT,
 		
 		_STR_DESKTOP = _consts.STR_DESKTOP,
@@ -74,7 +74,8 @@
 			var self = this,
 				scrollLeft = self.scrollArea.scrollLeft;
 			
-			console.log('scrollLeft: ' + scrollLeft);
+			console.log('scrollLeft: ' + scrollLeft +
+					'\nabsRight: ' + self.absRight);
 			
 			if(scrollLeft > 0) {
 				
@@ -83,12 +84,23 @@
 				
 				removeClass(self.btnLeft, _CLASS_ON);
 			}
+			
+			if(scrollLeft < self.absRight) {
+				
+				addClass(self.btnRight, _CLASS_ON);
+			}else {
+				
+				removeClass(self.btnRight, _CLASS_ON);
+			}
 		},
 		
 		assessWidowWidth: function() {
 			
 			var self = this,
-				windowWidth;
+				windowWidth,
+				lis = self.ul.querySelectorAll('li'),
+				lisWidth = 0;
+				i = 0;
 			
 			self.windowWidth = windowWidth = window.innerWidth;
 			
@@ -98,8 +110,16 @@
 				self.pad = _NUM_PADDESKTOP;
 			}
 			
-			console.log(windowWidth + '\n' + self.pad,
-					'\nul width: ' + self.ul.innerWidth);
+			for(; i < lis.length; i++) {
+				
+				//console.log('lis: ', lis[i].offsetWidth );
+				lisWidth += lis[i].offsetWidth;
+			}
+			
+			self.absRight = lisWidth - self.ul.offsetWidth;
+			
+			//console.log(windowWidth + '\n' + self.pad,
+			//		'\nul width: ' + self.ul.offsetWidth);
 		}
 	};
 	
