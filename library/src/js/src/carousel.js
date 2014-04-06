@@ -33,7 +33,7 @@
 			self.scrollArea = el.querySelector('.scroll-area');
 			self.ui = el.querySelector('.ui');
 			self.ul = self.scrollArea.querySelector('ul');
-			console.log('ul: ' + self.ul);
+			//console.log('ul: ' + self.ul);
 			
 			uiAs = self.ui.querySelectorAll('a');
 			
@@ -42,7 +42,7 @@
 			
 			self.btnWidth = self.btnLeft.innerWidth;
 			
-			console.log('here', self.btnLeft, self.btnLeft.innerWidth);
+			//console.log('here', self.btnLeft, self.btnLeft.innerWidth);
 			
 			self.assessWidowWidth();
 			self.assessUiOn();
@@ -74,8 +74,8 @@
 			var self = this,
 				scrollLeft = self.scrollArea.scrollLeft;
 			
-			console.log('scrollLeft: ' + scrollLeft +
-					'\nabsRight: ' + self.absRight);
+			//console.log('scrollLeft: ' + scrollLeft +
+			//		'\nabsRight: ' + self.absRight);
 			
 			if(scrollLeft > 0) {
 				
