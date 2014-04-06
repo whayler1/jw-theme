@@ -11,6 +11,8 @@
 		_STR_DESKTOP = _consts.STR_DESKTOP,
 		_STR_MOBILE = _consts.STR_MOBILE,
 		
+		_CLASS_ON = _consts.CLASS_ON,
+		
 		//_window = window,
 		
 		_carousel = function(el) {
@@ -30,6 +32,8 @@
 			
 			self.scrollArea = el.querySelector('.scroll-area');
 			self.ui = el.querySelector('.ui');
+			self.ul = self.scrollArea.querySelector('ul');
+			console.log('ul: ' + self.ul);
 			
 			uiAs = self.ui.querySelectorAll('a');
 			
@@ -67,9 +71,18 @@
 		
 		assessUiOn: function() {
 			
-			var self = this;
+			var self = this,
+				scrollLeft = self.scrollArea.scrollLeft;
 			
-			console.log(self.scrollArea.scrollLeft);
+			console.log('scrollLeft: ' + scrollLeft);
+			
+			if(scrollLeft > 0) {
+				
+				addClass(self.btnLeft, _CLASS_ON);
+			}else {
+				
+				removeClass(self.btnLeft, _CLASS_ON);
+			}
 		},
 		
 		assessWidowWidth: function() {
@@ -85,7 +98,8 @@
 				self.pad = _NUM_PADDESKTOP;
 			}
 			
-			console.log(windowWidth + '\n' + self.pad);
+			console.log(windowWidth + '\n' + self.pad,
+					'\nul width: ' + self.ul.innerWidth);
 		}
 	};
 	

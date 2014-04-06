@@ -8,6 +8,7 @@ var JW = JW || {};
 		QUERY_CAROUSEL: '.carousel',
 		
 		CLASS_EXPAND: 'expand',
+		CLASS_ON: 'on',
 		
 		NUM_PADMOBILE: 20,
 		NUM_PADDESKTOP: 50,
