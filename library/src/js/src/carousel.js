@@ -64,7 +64,28 @@
 			window.onresize = self.onResize.bind(self);
 			//addEventListener(_window, 'resize', self.onResize.bind(self) );
 			addEventListener(self.scrollArea, 'scroll', self.onScroll.bind(self) );
-		},
+			
+			addEventListener(self.btnLeft, 'click', self.prev.bind(self) );
+			addEventListener(self.btnRight, 'click', self.next.bind(self) );
+		},/*
+		
+		onUiClick: function(e) {
+			
+			var self = this,
+				target = e.target;
+			
+			console.log(target);
+			
+			if(target === self.btnRight) {
+				
+				console.log('next');
+				self.next();
+			}else {
+				
+				console.log('prev');
+				self.prev();
+			}
+		},*/
 		
 		onResize: function(e) {
 			
@@ -90,10 +111,63 @@
 			self.assesLisWidth();
 		},
 		
-		assessUiOn: function() {
+		next: function() {
 			
 			var self = this,
-				scrollLeft = self.scrollArea.scrollLeft;
+				scrollLeft = self.scrollLeft,
+				lisLeftOffsets = self.lisLeftOffsets,
+				lisLeftOffset,
+				absRight = self.absRight,
+				scrollArea = self.scrollArea,
+				i = 0;
+			
+			for(; i < lisLeftOffsets.length; i++) {
+				
+				lisLeftOffset = lisLeftOffsets[i];
+				
+				if(lisLeftOffset > scrollLeft) {
+					
+					if(lisLeftOffset < absRight) {
+						
+						scrollArea.scrollLeft = lisLeftOffset;
+					}else {
+						
+						scrollArea.scrollLeft = absRight;
+					}
+					return;
+				}
+			}
+			
+			scrollArea.scrollLeft = absRight;
+		},
+		
+		prev: function() {
+			
+			var self = this,
+				scrollLeft = self.scrollLeft,
+				lisLeftOffsets = self.lisLeftOffsets,
+				lisLeftOffset,
+				//absRight = self.absRight,
+				scrollArea = self.scrollArea,
+				i = lisLeftOffsets.length - 1;
+			
+			for(; i >= 0; i--) {
+				
+				lisLeftOffset = lisLeftOffsets[i];
+				
+				if(lisLeftOffset < scrollLeft) {
+					
+					scrollArea.scrollLeft = lisLeftOffset;
+					break;
+				}
+			}
+		},
+		
+		assessUiOn: function() {
+			
+			var self = this;
+			
+			self.scrollLeft = scrollLeft = self.scrollArea.scrollLeft;
 			
 			//console.log('scrollLeft: ' + scrollLeft +
 			//		'\nabsRight: ' + self.absRight);
@@ -122,13 +196,16 @@
 				lisWidth = 0;
 				i = 0;
 			
+			self.lisLeftOffsets = [];
+			
 			for(; i < lis.length; i++) {
 				
+				self.lisLeftOffsets.push(lisWidth);
 				//console.log('lis: ', lis[i].offsetWidth );
 				lisWidth += lis[i].offsetWidth;
 			}
 			
-			//console.log(lisWidth);
+			//console.log(self.lisLeftOffsets);
 			
 			self.absRight = lisWidth - self.ul.offsetWidth;
 			

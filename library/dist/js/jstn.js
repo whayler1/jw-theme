@@ -272,7 +272,8 @@ var JW = JW || {};
             imgs = self.ul.querySelectorAll("img"); i < imgs.length; i++) img = imgs[i], img.complete || (img.onload = self.onImgLoad.bind(self));
             uiAs = self.ui.querySelectorAll("a"), self.btnLeft = uiAs[0], self.btnRight = uiAs[1], 
             self.btnWidth = self.btnLeft.innerWidth, self.assessWidowWidth(), self.assessUiOn(), 
-            window.onresize = self.onResize.bind(self), addEventListener(self.scrollArea, "scroll", self.onScroll.bind(self));
+            window.onresize = self.onResize.bind(self), addEventListener(self.scrollArea, "scroll", self.onScroll.bind(self)), 
+            addEventListener(self.btnLeft, "click", self.prev.bind(self)), addEventListener(self.btnRight, "click", self.next.bind(self));
         },
         onResize: function() {
             var self = this;
@@ -286,14 +287,27 @@ var JW = JW || {};
             var self = this;
             self.assesLisWidth();
         },
+        next: function() {
+            for (var lisLeftOffset, self = this, scrollLeft = self.scrollLeft, lisLeftOffsets = self.lisLeftOffsets, absRight = self.absRight, scrollArea = self.scrollArea, i = 0; i < lisLeftOffsets.length; i++) if (lisLeftOffset = lisLeftOffsets[i], 
+            lisLeftOffset > scrollLeft) return void (scrollArea.scrollLeft = absRight > lisLeftOffset ? lisLeftOffset : absRight);
+            scrollArea.scrollLeft = absRight;
+        },
+        prev: function() {
+            for (var lisLeftOffset, self = this, scrollLeft = self.scrollLeft, lisLeftOffsets = self.lisLeftOffsets, scrollArea = self.scrollArea, i = lisLeftOffsets.length - 1; i >= 0; i--) if (lisLeftOffset = lisLeftOffsets[i], 
+            scrollLeft > lisLeftOffset) {
+                scrollArea.scrollLeft = lisLeftOffset;
+                break;
+            }
+        },
         assessUiOn: function() {
-            var self = this, scrollLeft = self.scrollArea.scrollLeft;
-            scrollLeft > 0 ? addClass(self.btnLeft, _CLASS_ON) : removeClass(self.btnLeft, _CLASS_ON), 
+            var self = this;
+            self.scrollLeft = scrollLeft = self.scrollArea.scrollLeft, scrollLeft > 0 ? addClass(self.btnLeft, _CLASS_ON) : removeClass(self.btnLeft, _CLASS_ON), 
             scrollLeft < self.absRight ? addClass(self.btnRight, _CLASS_ON) : removeClass(self.btnRight, _CLASS_ON);
         },
         assesLisWidth: function() {
             var self = this, lis = self.lis, lisWidth = 0;
-            for (i = 0; i < lis.length; i++) lisWidth += lis[i].offsetWidth;
+            for (i = 0, self.lisLeftOffsets = []; i < lis.length; i++) self.lisLeftOffsets.push(lisWidth), 
+            lisWidth += lis[i].offsetWidth;
             self.absRight = lisWidth - self.ul.offsetWidth, self.assessUiOn();
         },
         assessWidowWidth: function() {

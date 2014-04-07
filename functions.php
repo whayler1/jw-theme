@@ -180,8 +180,8 @@ function write_carousel($atts, $content) {
 			</ul>
 		</div>
 		<div class="ui">
-			<a href="javascript:void"><span><em><span>prev</span></em></span></a>
-			<a href="javascript:void"><span><em><span>next</span></em></span></a>
+			<a href="javascript:void(0)"><span><em><span>prev</span></em></span></a>
+			<a href="javascript:void(0)"><span><em><span>next</span></em></span></a>
 		</div>
 	</div>
 	<?php 
