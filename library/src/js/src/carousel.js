@@ -28,12 +28,28 @@
 			
 			var self = this,
 				el = self.el,
-				uiAs;
+				uiAs,
+				imgs,
+				img,
+				i = 0;
 			
 			self.scrollArea = el.querySelector('.scroll-area');
 			self.ui = el.querySelector('.ui');
 			self.ul = self.scrollArea.querySelector('ul');
-			//console.log('ul: ' + self.ul);
+			self.lis = self.ul.querySelectorAll('li');
+			imgs = self.ul.querySelectorAll('img');
+			
+			//console.log(self.imgs);
+			
+			for(; i < imgs.length; i++) {
+				
+				img = imgs[i];
+				//console.log(imgs[i].complete);
+				if(!img.complete) {
+				
+					img.onload = self.onImgLoad.bind(self);
+				}
+			}
 			
 			uiAs = self.ui.querySelectorAll('a');
 			
@@ -41,8 +57,6 @@
 			self.btnRight = uiAs[1];
 			
 			self.btnWidth = self.btnLeft.innerWidth;
-			
-			//console.log('here', self.btnLeft, self.btnLeft.innerWidth);
 			
 			self.assessWidowWidth();
 			self.assessUiOn();
@@ -67,6 +81,13 @@
 			//console.log('scrollll', self.el);
 			
 			self.assessUiOn();
+		},
+		
+		onImgLoad: function(e) {
+			
+			var self = this;
+			
+			self.assesLisWidth();
 		},
 		
 		assessUiOn: function() {
@@ -94,13 +115,30 @@
 			}
 		},
 		
+		assesLisWidth: function() {
+			
+			var self = this,
+				lis = self.lis,
+				lisWidth = 0;
+				i = 0;
+			
+			for(; i < lis.length; i++) {
+				
+				//console.log('lis: ', lis[i].offsetWidth );
+				lisWidth += lis[i].offsetWidth;
+			}
+			
+			//console.log(lisWidth);
+			
+			self.absRight = lisWidth - self.ul.offsetWidth;
+			
+			self.assessUiOn();
+		},
+		
 		assessWidowWidth: function() {
 			
 			var self = this,
-				windowWidth,
-				lis = self.ul.querySelectorAll('li'),
-				lisWidth = 0;
-				i = 0;
+				windowWidth;
 			
 			self.windowWidth = windowWidth = window.innerWidth;
 			
@@ -110,13 +148,7 @@
 				self.pad = _NUM_PADDESKTOP;
 			}
 			
-			for(; i < lis.length; i++) {
-				
-				//console.log('lis: ', lis[i].offsetWidth );
-				lisWidth += lis[i].offsetWidth;
-			}
-			
-			self.absRight = lisWidth - self.ul.offsetWidth;
+			self.assesLisWidth();
 			
 			//console.log(windowWidth + '\n' + self.pad,
 			//		'\nul width: ' + self.ul.offsetWidth);

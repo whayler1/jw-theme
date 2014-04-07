@@ -266,12 +266,13 @@ var JW = JW || {};
     };
     _carousel.prototype = {
         init: function() {
-            var uiAs, self = this, el = self.el;
-            self.scrollArea = el.querySelector(".scroll-area"), self.ui = el.querySelector(".ui"), 
-            self.ul = self.scrollArea.querySelector("ul"), console.log("ul: " + self.ul), uiAs = self.ui.querySelectorAll("a"), 
-            self.btnLeft = uiAs[0], self.btnRight = uiAs[1], self.btnWidth = self.btnLeft.innerWidth, 
-            console.log("here", self.btnLeft, self.btnLeft.innerWidth), self.assessWidowWidth(), 
-            self.assessUiOn(), window.onresize = self.onResize.bind(self), addEventListener(self.scrollArea, "scroll", self.onScroll.bind(self));
+            var uiAs, imgs, img, self = this, el = self.el, i = 0;
+            for (self.scrollArea = el.querySelector(".scroll-area"), self.ui = el.querySelector(".ui"), 
+            self.ul = self.scrollArea.querySelector("ul"), self.lis = self.ul.querySelectorAll("li"), 
+            imgs = self.ul.querySelectorAll("img"); i < imgs.length; i++) img = imgs[i], img.complete || (img.onload = self.onImgLoad.bind(self));
+            uiAs = self.ui.querySelectorAll("a"), self.btnLeft = uiAs[0], self.btnRight = uiAs[1], 
+            self.btnWidth = self.btnLeft.innerWidth, self.assessWidowWidth(), self.assessUiOn(), 
+            window.onresize = self.onResize.bind(self), addEventListener(self.scrollArea, "scroll", self.onScroll.bind(self));
         },
         onResize: function() {
             var self = this;
@@ -281,15 +282,24 @@ var JW = JW || {};
             var self = this;
             self.assessUiOn();
         },
+        onImgLoad: function() {
+            var self = this;
+            self.assesLisWidth();
+        },
         assessUiOn: function() {
             var self = this, scrollLeft = self.scrollArea.scrollLeft;
-            console.log("scrollLeft: " + scrollLeft + "\nabsRight: " + self.absRight), scrollLeft > 0 ? addClass(self.btnLeft, _CLASS_ON) : removeClass(self.btnLeft, _CLASS_ON), 
+            scrollLeft > 0 ? addClass(self.btnLeft, _CLASS_ON) : removeClass(self.btnLeft, _CLASS_ON), 
             scrollLeft < self.absRight ? addClass(self.btnRight, _CLASS_ON) : removeClass(self.btnRight, _CLASS_ON);
         },
+        assesLisWidth: function() {
+            var self = this, lis = self.lis, lisWidth = 0;
+            for (i = 0; i < lis.length; i++) lisWidth += lis[i].offsetWidth;
+            self.absRight = lisWidth - self.ul.offsetWidth, self.assessUiOn();
+        },
         assessWidowWidth: function() {
-            var windowWidth, self = this, lis = self.ul.querySelectorAll("li"), lisWidth = 0;
-            for (i = 0, self.windowWidth = windowWidth = window.innerWidth, self.pad = _NUM_BREAKPOINT > windowWidth ? _NUM_PADMOBILE : _NUM_PADDESKTOP; i < lis.length; i++) lisWidth += lis[i].offsetWidth;
-            self.absRight = lisWidth - self.ul.offsetWidth;
+            var windowWidth, self = this;
+            self.windowWidth = windowWidth = window.innerWidth, self.pad = _NUM_BREAKPOINT > windowWidth ? _NUM_PADMOBILE : _NUM_PADDESKTOP, 
+            self.assesLisWidth();
         }
     };
     for (var i = 0; i < _carousels.length; i++) new _carousel(_carousels[i]);
