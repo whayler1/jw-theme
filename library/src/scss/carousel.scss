@@ -54,7 +54,8 @@ $carousel-height-desktop: 700px;
 	.ui {
 		a {
 			position: absolute;
-			display: block;
+			//display: block;
+			display: none;
 			top: 0;
 			left: 0;
 			width: $pad-mobile;
@@ -66,8 +67,8 @@ $carousel-height-desktop: 700px;
 			@include transform(translateZ(0) );
 			
 			>span {
-				//display: table;
-				display: none;
+				display: table;
+				//display: none;
 				width: 100%;
 				height: 100%;
 				//background: rgba(200,100,130,0.4);
@@ -80,17 +81,25 @@ $carousel-height-desktop: 700px;
 					>span {
 						display: block;
 						margin: 0 auto;
-						width: 21px;
-						height: 35px;
+						width: 16px;
+						height: 26px;
 						font-size: 0;
-						@include sprite(-139px, -40px);
+						@include sprite(-144px, -110px);
+						
+						@media screen and (min-width: 768px) {
+							width: 21px;
+							height: 35px;
+							background-position: -139px -40px;
+						}
 					}
 				}
 			}
 			
 			&.on {
+				display: block;
+				
 				>span {
-					display: table;
+					//display: table; 
 				}
 			}
 			
@@ -100,7 +109,11 @@ $carousel-height-desktop: 700px;
 				>span{
 					>em {
 						>span {
-							background-position: -115px -40px;
+							background-position: -125px -110px;
+							
+							@media screen and (min-width: 768px) {
+								background-position: -115px -40px;
+							}
 						}
 					}
 				}
@@ -113,7 +126,11 @@ $carousel-height-desktop: 700px;
 				>span {
 					>em {
 						>span {
-							background-position: -139px 0;
+							background-position: -144px -80px;
+							
+							@media screen and (min-width: 768px) {
+								background-position: -139px 0;
+							}
 						}
 					}
 				}
@@ -124,7 +141,12 @@ $carousel-height-desktop: 700px;
 					>span {
 						>em {
 							>span {
-								background-position: -115px 0;
+								
+								background-position: -125px -80px;
+								
+								@media screen and (min-width: 768px) {
+									background-position: -115px 0;
+								}
 							}
 						}
 					}
