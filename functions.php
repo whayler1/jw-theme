@@ -182,6 +182,7 @@ function write_carousel($atts, $content) {
 		<div class="ui">
 			<a href="javascript:void(0)"><span><em><span>prev</span></em></span></a>
 			<a href="javascript:void(0)"><span><em><span>next</span></em></span></a>
+			<p class="no-desktop">Swipe images to scroll.</p>
 		</div>
 	</div>
 	<?php 
