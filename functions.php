@@ -174,6 +174,8 @@ function write_carousel($atts, $content) {
 	
 	ob_start();?>
 	<div class="carousel">
+		<div class="coverup"></div>
+		<div class="coverup"></div>
 		<div class="scroll-area">
 			<ul>
 			<?php echo do_shortcode($content); ?>
