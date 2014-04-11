@@ -15,6 +15,7 @@ bmConfig = {
 				utilScripts + 'class-manager.js',
 				utilScripts + 'add-event-listener.js',
 				utilScripts + 'remove-event-listener.js',
+				utilScripts + 'easing.js',
 				srcScripts + 'consts.js',
 				srcScripts + 'dropdown.js',
 				srcScripts + 'carousel.js'

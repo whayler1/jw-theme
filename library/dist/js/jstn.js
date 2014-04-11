@@ -229,6 +229,12 @@ window.Modernizr = function(a, b, c) {
 
 var JW = JW || {};
 
+JW.Ease = JW.Ease || {}, JW.Ease.easeOutQuad = function(t, b, c, d) {
+    return t /= d, -c * t * (t - 2) + b;
+};
+
+var JW = JW || {};
+
 !function() {
     JW.consts = {
         QUERY_DROPOWN: ".drop-down",
