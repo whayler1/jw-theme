@@ -107,6 +107,7 @@ module.exports = function(grunt) {
 					'.sass-cache',
 					'.git',
 					'.ftppass',
+					'package.json',
 					'CHANGELOG.md',
 					'README.md',
 					'node_modules',
