@@ -87,11 +87,39 @@ module.exports = function(grunt) {
 				},
 				command: src.cssCommand
 			}
+		},
+		
+		ftpush: {
+			build: {
+				auth: {
+					host: 'justindeanworsdale.com',
+					port: 21,
+					authKey: 'key1'
+				},
+				src: './',
+				dest: '/jstn/wp-content/themes/jw-theme',
+				exclusions: [
+					'library/src/',
+					'gruntfile.js',
+					'grunt-config.js',
+					'.gitignore',
+					'.grunt',
+					'.sass-cache',
+					'.git',
+					'.ftppass',
+					'CHANGELOG.md',
+					'README.md',
+					'node_modules',
+					'throwaway.css'
+				],
+				//keep: [],
+				simple: true
+			}
 		}
 	});
 	
 	grunt.registerTask('exit', 'Just exits.', function() {
-	    process.exit(0);
+			process.exit(0);
 	});
 	
 	grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -99,4 +127,5 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
 	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-ftpush');
 };
