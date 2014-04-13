@@ -1,4 +1,5 @@
 node_modules
 .sass-cache
+.ftppass
 .DS_Store
 library/dist/.DS_Store
