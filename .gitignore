@@ -1,6 +1,4 @@
 node_modules
-.sass-cache
-.grunt
-.ftppass
-.DS_Store
+.*
 library/dist/.DS_Store
+ftp-key.js

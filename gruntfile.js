@@ -1,4 +1,5 @@
 var bmConfig = require('./grunt-config'),
+	ftpKey = require('./ftp-key'),
 	src = bmConfig,
 	opts = bmConfig.options;
 
@@ -19,6 +20,12 @@ module.exports = function(grunt) {
 		uglify: {
 			src: {
 				options: opts.uglify.dev,
+				files: {
+					'library/dist/js/jstn.js': src.js.all
+				}
+			},
+			prod: {
+				options: opts.uglify.prod,
 				files: {
 					'library/dist/js/jstn.js': src.js.all
 				}
@@ -90,23 +97,16 @@ module.exports = function(grunt) {
 		},
 		
 		ftpush: {
-			build: {
-				auth: {
-					host: 'justindeanworsdale.com',
-					port: 21,
-					authKey: 'key1'
-				},
+			prod: {
+				auth: ftpKey.auth,
 				src: './',
-				dest: '/jstn/wp-content/themes/jw-theme',
+				dest: ftpKey.dest,
 				exclusions: [
+					'.*',
 					'library/src/',
+					'ftp-key.js',
 					'gruntfile.js',
 					'grunt-config.js',
-					'.gitignore',
-					'.grunt',
-					'.sass-cache',
-					'.git',
-					'.ftppass',
 					'package.json',
 					'CHANGELOG.md',
 					'README.md',
@@ -122,6 +122,11 @@ module.exports = function(grunt) {
 	grunt.registerTask('exit', 'Just exits.', function() {
 			process.exit(0);
 	});
+	
+	grunt.registerTask('publish', [
+		'uglify:prod',
+		'ftpush:prod'
+	]);
 	
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
