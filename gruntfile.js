@@ -110,8 +110,7 @@ module.exports = function(grunt) {
 					'package.json',
 					'CHANGELOG.md',
 					'README.md',
-					'node_modules',
-					'throwaway.css'
+					'node_modules'
 				],
 				//keep: [],
 				simple: true
