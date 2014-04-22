@@ -171,24 +171,28 @@ function write_img($atts) {
 function write_carousel($atts, $content) {
 	
 	//$imgs = split(',', $atts[imgs]);
+	if(is_single() ) {
+
+		ob_start();?>
+		<div class="carousel">
+			<div class="coverup"></div>
+			<div class="coverup"></div>
+			<div class="scroll-area">
+				<ul>
+				<?php echo do_shortcode($content); ?>
+				</ul>
+			</div>
+			<div class="ui">
+				<a href="javascript:void(0)"><span><em><span>prev</span></em></span></a>
+				<a href="javascript:void(0)"><span><em><span>next</span></em></span></a>
+				<p class="no-desktop">Swipe images to scroll.</p>
+			</div>
+		</div>
+		<?php 
+		return ob_get_clean();
+	}
 	
-	ob_start();?>
-	<div class="carousel">
-		<div class="coverup"></div>
-		<div class="coverup"></div>
-		<div class="scroll-area">
-			<ul>
-			<?php echo do_shortcode($content); ?>
-			</ul>
-		</div>
-		<div class="ui">
-			<a href="javascript:void(0)"><span><em><span>prev</span></em></span></a>
-			<a href="javascript:void(0)"><span><em><span>next</span></em></span></a>
-			<p class="no-desktop">Swipe images to scroll.</p>
-		</div>
-	</div>
-	<?php 
-	return ob_get_clean();
+	return '';
 }
 
 add_shortcode('carousel', 'write_carousel');
