@@ -101,17 +101,7 @@ module.exports = function(grunt) {
 				auth: ftpKey.auth,
 				src: './',
 				dest: ftpKey.dest,
-				exclusions: [
-					'.*',
-					'library/src/',
-					'ftp-key.js',
-					'gruntfile.js',
-					'grunt-config.js',
-					'package.json',
-					'CHANGELOG.md',
-					'README.md',
-					'node_modules'
-				],
+				exclusions: ftpKey.exclusions,
 				//keep: [],
 				simple: true
 			}
