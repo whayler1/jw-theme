@@ -4,6 +4,8 @@
 		
 		_carousels = document.querySelectorAll(_consts.QUERY_CAROUSEL),
 		
+		_dom = JW.Dom,
+		
 		_NUM_PADMOBILE = _consts.NUM_PADMOBILE,
 		_NUM_PADDESKTOP = _consts.NUM_PADDESKTOP,
 		_NUM_BREAKPOINT = _consts.NUM_BREAKPOINT,
@@ -62,11 +64,11 @@
 			self.assessUiOn();
 			
 			window.onresize = self.onResize.bind(self);
-			//addEventListener(_window, 'resize', self.onResize.bind(self) );
-			addEventListener(self.scrollArea, 'scroll', self.onScroll.bind(self) );
+			//_dom.addEventListener(_window, 'resize', self.onResize.bind(self) );
+			_dom.addEventListener(self.scrollArea, 'scroll', self.onScroll.bind(self) );
 			
-			addEventListener(self.btnLeft, 'click', self.prev.bind(self) );
-			addEventListener(self.btnRight, 'click', self.next.bind(self) );
+			_dom.addEventListener(self.btnLeft, 'click', self.prev.bind(self) );
+			_dom.addEventListener(self.btnRight, 'click', self.next.bind(self) );
 		},/*
 		
 		onUiClick: function(e) {
@@ -174,18 +176,18 @@
 			
 			if(scrollLeft > 0) {
 				
-				addClass(self.btnLeft, _CLASS_ON);
+				_dom.addClass(self.btnLeft, _CLASS_ON);
 			}else {
 				
-				removeClass(self.btnLeft, _CLASS_ON);
+				_dom.removeClass(self.btnLeft, _CLASS_ON);
 			}
 			
 			if(scrollLeft < self.absRight) {
 				
-				addClass(self.btnRight, _CLASS_ON);
+				_dom.addClass(self.btnRight, _CLASS_ON);
 			}else {
 				
-				removeClass(self.btnRight, _CLASS_ON);
+				_dom.removeClass(self.btnRight, _CLASS_ON);
 			}
 		},
 		

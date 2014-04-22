@@ -1,6 +1,8 @@
-(function(document, window) {
+(function(document, window, JW) {
 	
-	window.hasClass = function(el, className) {
+	JW.Dom = JW.Dom || {};
+	
+	JW.Dom.hasClass = function(el, className) {
 		
 		if (el.classList) {
 			return el.classList.contains(className);
@@ -9,7 +11,7 @@
 		}
 	};
 	
-	window.addClass = function(el, className) {
+	JW.Dom.addClass = function(el, className) {
 		
 		if (el.classList) {
 			el.classList.add(className);
@@ -18,7 +20,7 @@
 		}
 	};
 	
-	window.removeClass = function(el, className) {
+	JW.Dom.removeClass = function(el, className) {
 		
 		if (el.classList) {
 			el.classList.remove(className);
@@ -29,4 +31,4 @@
 					'(\\b|$)', 'gi'), ' ');
 		}
 	};
-}(document, window));
+}(document, window, JW));
