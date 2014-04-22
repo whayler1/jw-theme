@@ -1,13 +1,3 @@
-function addEventListener(el, eventName, handler) {
-    el.addEventListener ? el.addEventListener(eventName, handler) : el.attachEvent("on" + eventName, function() {
-        handler.call(el);
-    });
-}
-
-function removeEventListener(el, eventName, handler) {
-    el.removeEventListener ? el.removeEventListener(eventName, handler) : el.detachEvent("on" + eventName, handler);
-}
-
 window.Modernizr = function(a, b, c) {
     function z(a) {
         j.cssText = a;
@@ -217,7 +207,11 @@ window.Modernizr = function(a, b, c) {
     };
 }(this, document), Modernizr.load = function() {
     yepnope.apply(window, [].slice.call(arguments, 0));
-}, function(document, window, JW) {
+};
+
+var JW = {};
+
+!function(document, window, JW) {
     JW.Dom = JW.Dom || {}, JW.Dom.hasClass = function(el, className) {
         return el.classList ? el.classList.contains(className) : new RegExp("(^| )" + className + "( |$)", "gi").test(el.className);
     }, JW.Dom.addClass = function(el, className) {
@@ -225,29 +219,27 @@ window.Modernizr = function(a, b, c) {
     }, JW.Dom.removeClass = function(el, className) {
         el.classList ? el.classList.remove(className) : el.className = el.className.replace(new RegExp("(^|\\b)" + className.split(" ").join("|") + "(\\b|$)", "gi"), " ");
     };
-}(document, window, JW);
-
-var JW = JW || {};
-
-JW.Ease = JW.Ease || {}, JW.Ease.easeOutQuad = function(t, b, c, d) {
-    return t /= d, -c * t * (t - 2) + b;
-};
-
-var JW = JW || {};
-
-!function() {
-    JW.consts = {
-        QUERY_DROPOWN: ".drop-down",
-        QUERY_CAROUSEL: ".carousel",
-        CLASS_EXPAND: "expand",
-        CLASS_ON: "on",
-        NUM_PADMOBILE: 20,
-        NUM_PADDESKTOP: 50,
-        NUM_BREAKPOINT: 768,
-        STR_DESKTOP: "desktop",
-        STR_MOBILE: "mobile"
+}(document, window, JW), function(JW) {
+    JW.Dom = JW.Dom || {}, JW.Dom.addEventListener = function(el, eventName, handler) {
+        el.addEventListener ? el.addEventListener(eventName, handler) : el.attachEvent("on" + eventName, function() {
+            handler.call(el);
+        });
+    }, JW.Dom.removeEventListener = function(el, eventName, handler) {
+        el.removeEventListener ? el.removeEventListener(eventName, handler) : el.detachEvent("on" + eventName, handler);
     };
-}(document, window), function(JW, document) {
+}(JW), JW.Ease = JW.Ease || {}, JW.Ease.easeOutQuad = function(t, b, c, d) {
+    return t /= d, -c * t * (t - 2) + b;
+}, JW.consts = {
+    QUERY_DROPOWN: ".drop-down",
+    QUERY_CAROUSEL: ".carousel",
+    CLASS_EXPAND: "expand",
+    CLASS_ON: "on",
+    NUM_PADMOBILE: 20,
+    NUM_PADDESKTOP: 50,
+    NUM_BREAKPOINT: 768,
+    STR_DESKTOP: "desktop",
+    STR_MOBILE: "mobile"
+}, function(JW, document) {
     var _consts = JW.consts, _QUERY_DROPOWN = _consts.QUERY_DROPOWN, _CLASS_EXPAND = _consts.CLASS_EXPAND, _dropDown = function(el) {
         var self = this;
         self.el = el, self.init();
@@ -278,8 +270,8 @@ var JW = JW || {};
             imgs = self.ul.querySelectorAll("img"); i < imgs.length; i++) img = imgs[i], img.complete || (img.onload = self.onImgLoad.bind(self));
             uiAs = self.ui.querySelectorAll("a"), self.btnLeft = uiAs[0], self.btnRight = uiAs[1], 
             self.btnWidth = self.btnLeft.innerWidth, self.assessWidowWidth(), self.assessUiOn(), 
-            window.onresize = self.onResize.bind(self), addEventListener(self.scrollArea, "scroll", self.onScroll.bind(self)), 
-            addEventListener(self.btnLeft, "click", self.prev.bind(self)), addEventListener(self.btnRight, "click", self.next.bind(self));
+            window.onresize = self.onResize.bind(self), _dom.addEventListener(self.scrollArea, "scroll", self.onScroll.bind(self)), 
+            _dom.addEventListener(self.btnLeft, "click", self.prev.bind(self)), _dom.addEventListener(self.btnRight, "click", self.next.bind(self));
         },
         onResize: function() {
             var self = this;

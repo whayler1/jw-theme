@@ -1,7 +1,7 @@
 
 (function(JW) {
 	
-	var JW.Dom = JW.Dom || {};
+	JW.Dom = JW.Dom || {};
 	
 	JW.Dom.addEventListener = function(el, eventName, handler) {
 		
@@ -16,12 +16,12 @@
 				handler.call(el);
 			});
 		}
-	}
+	};
 	
 	JW.Dom.removeEventListener = function(el, eventName, handler) {
 		if (el.removeEventListener)
 			el.removeEventListener(eventName, handler);
 		else
 			el.detachEvent('on' + eventName, handler);
-	}
+	};
 }(JW));

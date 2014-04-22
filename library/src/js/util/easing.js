@@ -7,8 +7,6 @@
  * @param {Number} d Duration.
  */
 
-var JW = JW || {};
-
 JW.Ease = JW.Ease || {};
 
 JW.Ease.easeOutQuad = function (t, b, c, d) {

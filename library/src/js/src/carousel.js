@@ -76,7 +76,7 @@
 			var self = this,
 				target = e.target;
 			
-			console.log(target);
+			console.log(target); 
 			
 			if(target === self.btnRight) {
 				
