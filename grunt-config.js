@@ -9,7 +9,7 @@ bmConfig = {
 		js: {
 			libs: [
 				/*libScripts + 'html5shiv/html5shiv.js',*/
-				libScripts + 'modernizr/modernizr.custom.04420.js'
+				libScripts + 'modernizr/modernizr.custom.26518.js',
 			],
 			src: [
 				utilScripts + 'jw.js',

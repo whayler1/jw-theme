@@ -27,7 +27,7 @@ window.Modernizr = function(a, b, c) {
         return B(b, "string") || B(b, "undefined") ? D(e, b) : (e = (a + " " + o.join(d + " ") + d).split(" "), 
         E(e, b, c));
     }
-    var k, u, y, d = "2.7.1", e = {}, f = !0, g = b.documentElement, h = "modernizr", i = b.createElement(h), j = i.style, m = ({}.toString, 
+    var k, u, y, d = "2.7.2", e = {}, f = !0, g = b.documentElement, h = "modernizr", i = b.createElement(h), j = i.style, m = ({}.toString, 
     "Webkit Moz O ms"), n = m.split(" "), o = m.toLowerCase().split(" "), p = {}, s = [], t = s.slice, v = function(a, c, d, e) {
         var f, i, j, k, l = b.createElement("div"), m = b.body, n = m || b.createElement("body");
         if (parseInt(d, 10)) for (;d--; ) j = b.createElement("div"), j.id = e ? e[d] : h + (d + 1), 
@@ -207,7 +207,9 @@ window.Modernizr = function(a, b, c) {
     };
 }(this, document), Modernizr.load = function() {
     yepnope.apply(window, [].slice.call(arguments, 0));
-};
+}, Modernizr.addTest("overflowscrolling", function() {
+    return Modernizr.testAllProps("overflowScrolling");
+});
 
 var JW = {};
 
