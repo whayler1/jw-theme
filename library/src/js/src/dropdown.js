@@ -1,6 +1,7 @@
 (function(JW, document, window) {
 	
 	var _consts = JW.consts,
+		_dom = JW.Dom,
 		
 		_QUERY_DROPOWN = _consts.QUERY_DROPOWN,
 		
@@ -38,7 +39,7 @@
 			self.anchor = self.el.querySelector('a');
 			//console.log('init');
 			
-			addEventListener(self.anchor, 'click', self.onClick.bind(self) );
+			_dom.addEventListener(self.anchor, 'click', self.onClick.bind(self) );
 		},
 		
 		onClick: function(e) {
@@ -46,46 +47,17 @@
 			var self = this,
 				el = self.el;
 			
-			if(!hasClass(el, _CLASS_EXPAND) ) {
+			if(!_dom.hasClass(el, _CLASS_EXPAND) ) {
 				
 				//console.log('has');
-				addClass(el, _CLASS_EXPAND);
+				_dom.addClass(el, _CLASS_EXPAND);
 			}else {
 				
 				//console.log('has not');
-				removeClass(el, _CLASS_EXPAND);
+				_dom.removeClass(el, _CLASS_EXPAND);
 			}
 		}
 	};
-		/*
-		_onClick = function(e) {
-			
-			var target = e.target;
-			
-			if(!hasClass(target, _CLASS_EXPAND) ) {
-				
-				//console.log('has');
-				addClass(target, _CLASS_EXPAND);
-			}else {
-				
-				//console.log('has not');
-				removeClass(target, _CLASS_EXPAND);
-			}
-		},
-		
-		_init = function() {
-			
-			var dropdowns = document.querySelectorAll(_QUERY_DROPOWN),
-				i = 0;
-			
-			console.log(dropdowns);
-			
-			for( ; i < dropdowns.length; i++) {
-				
-				addEventListener(dropdowns[i], 'click', _onClick);
-			}
-		};
-	*/
 	
 	_init();
 	

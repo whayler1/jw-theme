@@ -242,7 +242,7 @@ var JW = {};
     STR_DESKTOP: "desktop",
     STR_MOBILE: "mobile"
 }, function(JW, document) {
-    var _consts = JW.consts, _QUERY_DROPOWN = _consts.QUERY_DROPOWN, _CLASS_EXPAND = _consts.CLASS_EXPAND, _dropDown = function(el) {
+    var _consts = JW.consts, _dom = JW.Dom, _QUERY_DROPOWN = _consts.QUERY_DROPOWN, _CLASS_EXPAND = _consts.CLASS_EXPAND, _dropDown = function(el) {
         var self = this;
         self.el = el, self.init();
     }, _init = function() {
@@ -251,11 +251,11 @@ var JW = {};
     _dropDown.prototype = {
         init: function() {
             var self = this;
-            self.anchor = self.el.querySelector("a"), addEventListener(self.anchor, "click", self.onClick.bind(self));
+            self.anchor = self.el.querySelector("a"), _dom.addEventListener(self.anchor, "click", self.onClick.bind(self));
         },
         onClick: function() {
             var self = this, el = self.el;
-            hasClass(el, _CLASS_EXPAND) ? removeClass(el, _CLASS_EXPAND) : addClass(el, _CLASS_EXPAND);
+            _dom.hasClass(el, _CLASS_EXPAND) ? _dom.removeClass(el, _CLASS_EXPAND) : _dom.addClass(el, _CLASS_EXPAND);
         }
     }, _init();
 }(JW, document, window), function(JW, document, window) {
