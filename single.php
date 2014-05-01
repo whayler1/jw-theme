@@ -10,7 +10,7 @@
 							
 							<header class="article-header">
 
-								<h1 class="h2" itemprop="headline"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a><span class="time"><?php printf( __( ' &mdash; <time class="updated" datetime="%1$s" pubdate>%2$s</time>'), get_the_time('Y-m-j'), get_the_time(get_option('date_format'))); ?></span></h1>
+								<h1 class="h2" itemprop="headline"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a><span class="categories"><?php printf( __( ' &mdash; %1$s') , get_the_category_list(' , ')); ?></span></h1>
 								
 							</header>
 							
@@ -26,7 +26,7 @@
 							</section>
 
 							<footer class="article-footer">
-								<p><?php the_tags( '<span class="tags-title">' . __( '', 'bonestheme' ) . '</span> ', ', ', '' ); ?> | <span class="categories"><?php printf( __( '%1$s') , get_the_category_list(', ')); ?></span></p>
+								<p><?php printf( __( '<time class="updated" datetime="%1$s" pubdate>%2$s</time>'), get_the_time('Y-m-j'), get_the_time(get_option('date_format'))); ?>. Tagged: <?php the_tags( '<span class="tags-title">' . __( '', 'bonestheme' ) . '</span> ', ', ', '' ); ?></p>
 
 							</footer>
 							

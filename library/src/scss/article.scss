@@ -157,7 +157,7 @@ article {
 	h1 {
 		font-size: 1.7em;
 		
-		a {
+		>a {
 			text-decoration: none;
 			color: $grey-dark;
 			
@@ -172,6 +172,25 @@ article {
 				}
 			}
 			
+		}
+		
+		>.categories {
+			color: $grey;
+			white-space: nowrap;
+			
+			a {
+				@include font-standard();
+				font-style: normal;
+				font-weight: 200;
+				text-decoration: none;
+				color: $grey;
+				letter-spacing: normal;
+				
+				&:hover,
+				&:focus {
+					color: lighten($grey, 10%);
+				}
+			}
 		}
 	}
 	
@@ -261,17 +280,22 @@ article {
 	@media screen and (min-width: 768px) {
 		position: absolute;
 		bottom: 0;
-		width: 100%;
+		//width: 100%;
 		left: 0;
+		right: 0;
 		z-index: 100;
 		//background: url(#{$img-path}wht-gradient.png) left top repeat-x transparent;
 		padding-top: 15px;
 		
 	}
 	
+	>div {
+		background: white;
+		font-weight: 200;
+	}
+	
 	p {
 		color: $grey-dim;
-		font-weight: 200;
 		
 		@media screen and (min-width: 768px) {
 			margin: 0;
