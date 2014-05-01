@@ -10,7 +10,7 @@
 							
 							<header class="article-header">
 
-								<h1 class="h2" itemprop="headline"><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a><span class="categories"><?php printf( __( ' &mdash; %1$s') , get_the_category_list(' , ')); ?></span></h1>
+								<h1 class="h2" itemprop="headline"><?php the_title(); ?><span class="categories"><?php printf( __( ' &mdash; %1$s') , get_the_category_list(' , ')); ?></span></h1>
 								
 							</header>
 							
