@@ -46,7 +46,7 @@ module.exports = function(grunt) {
 		watch: {
 			grunt: {
 				options: {
-					nospawn: true
+					reload: true
 				},
 				files: [
 					'gruntfile.js',
@@ -75,18 +75,6 @@ module.exports = function(grunt) {
 		},
 		
 		shell: {
-			watchHack: {
-				options: {
-					stdout: true,
-					stderr: true
-				},
-				command: [
-					'while true',
-					'do grunt watch',
-					'echo -e "\nRESTART"',
-					'done'
-				].join(';')
-			},
 			srcCss: {
 				options: {
 					stdout: true,
