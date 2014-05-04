@@ -8,16 +8,6 @@ just edit things like thumbnail sizes, header images,
 sidebars, comments, ect.
 */
 
-/************* PACKAGE JSON *********************/
-
-/*
-Parsing package json to get file version # and other object data that may be needed for publish.
-*/
-
-$packageJson = file_get_contents('wp-content/themes/jw-theme/package.json');
-$packageJson = json_decode($packageJson);
-$version = $packageJson->version;
-
 /************* INCLUDE NEEDED FILES ***************/
 
 /*

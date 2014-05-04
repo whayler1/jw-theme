@@ -16,6 +16,20 @@ and tools. I put it up here so it's
 right up top and clean.
 *********************/
 
+/************* PACKAGE JSON *********************/
+
+/*
+Parsing package json to get file version # and other object data that may be needed for publish.
+*/
+
+function package_json() {
+	
+	$package_json = file_get_contents('wp-content/themes/jw-theme/package.json');
+	$package_json = json_decode($package_json);
+	
+	return $package_json;
+}
+
 // we're firing all out initial functions at the start
 add_action( 'after_setup_theme', 'bones_ahoy', 16 );
 
@@ -120,17 +134,18 @@ function bones_gallery_style($css) {
 SCRIPTS & ENQUEUEING
 *********************/
 
-// loading modernizr and jquery, and reply script
 function bones_scripts_and_styles() {
 	global $wp_styles; // call global $wp_styles variable to add conditional wrapper around ie stylesheet the WordPress way
 	global $wp_scripts;
 	if (!is_admin()) {
-
+		
+		$package_json = package_json();
+		$version = $package_json->version;
 		// modernizr (without media query polyfill)
 		//wp_register_script( 'bones-modernizr', get_stylesheet_directory_uri() . '/library/js/libs/modernizr.custom.min.js', array(), '2.5.3', false );
 
 		// register main stylesheet
-		wp_register_style( 'jstn-stylesheet', '/wp-content/themes/jw-theme/library/dist/css/jstn.css', array(), '', 'all' );
+		wp_register_style( 'jstn-stylesheet', '/wp-content/themes/jw-theme/library/dist/css/jstn.' . $version . '.css', array(), '', 'all' );
 		
 		// add google fonts
 		wp_register_style( 'google-fonts', 'http://fonts.googleapis.com/css?family=Old+Standard+TT:400italic', array(), '', 'all' );
@@ -144,7 +159,7 @@ function bones_scripts_and_styles() {
 		}
 
 		//adding scripts file in the footer
-		wp_register_script( 'jstn-js', '/wp-content/themes/jw-theme/library/dist/js/jstn.js', array(), '', true );
+		wp_register_script( 'jstn-js', '/wp-content/themes/jw-theme/library/dist/js/jstn.' . $version . '.js', array(), '', true );
 		wp_register_script('html5shiv', '//html5shiv.googlecode.com/svn/trunk/html5.js', array(), '', false);
 
 		// enqueue styles and scripts

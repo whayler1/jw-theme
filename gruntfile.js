@@ -21,13 +21,13 @@ module.exports = function(grunt) {
 			src: {
 				options: opts.uglify.dev,
 				files: {
-					'library/dist/js/jstn.js': src.js.all
+					'library/dist/js/jstn.<%= pkg.version %>.js': src.js.all
 				}
 			},
 			prod: {
 				options: opts.uglify.prod,
 				files: {
-					'library/dist/js/jstn.js': src.js.all
+					'library/dist/js/jstn.<%= pkg.version %>.js': src.js.all
 				}
 			}
 		},
@@ -38,7 +38,7 @@ module.exports = function(grunt) {
 			},
 			src: {
 				files: {
-					'library/dist/css/jstn.css': 'library/src/scss/imports.scss'
+					'library/dist/css/jstn.<%= pkg.version %>.css': 'library/src/scss/imports.scss'
 				}
 			}
 		},
