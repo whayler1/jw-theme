@@ -15,9 +15,9 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'library/src/js/src/*.js',
-      'library/src/js/text/*.js',
-      'library/src/js/test/*.js'
+      'library/src/js/src/consts.js',
+      'library/src/js/src/carousel.js',
+      'library/src/js/test/carouselSpec.js'
     ],
 
 

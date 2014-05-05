@@ -1,3 +1,5 @@
+var JW = JW || {};
+
 (function(JW, document, window) {
 	
 	var _consts = JW.consts,
@@ -233,6 +235,8 @@
 			//		'\nul width: ' + self.ul.offsetWidth);
 		}
 	};
+	
+	JW.carousel = _carousel;
 	
 	for(var i = 0; i < _carousels.length; i++) {
 		
