@@ -1,5 +1,3 @@
-var JW = JW || {};
-
 (function(JW, document, window) {
 	
 	var _consts = JW.consts,

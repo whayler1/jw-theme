@@ -1,5 +1,3 @@
-var JW = JW || {};
-
 JW.consts = {
 		
 	QUERY_DROPOWN: '.drop-down',
