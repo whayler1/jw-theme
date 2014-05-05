@@ -236,11 +236,13 @@ var JW = JW || {};
 		}
 	};
 	
-	JW.carousel = _carousel;
-	
 	for(var i = 0; i < _carousels.length; i++) {
 		
 		new _carousel(_carousels[i] );
 	}
+	
+	// create a reference to carousel constructor for unit testing.
+	
+	JW.carousel = _carousel;
 	
 }(JW, document, window) );
