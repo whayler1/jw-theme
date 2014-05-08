@@ -116,6 +116,11 @@
 
 .single,
 .page {
+	.article-footer {
+		>div {
+			background: transparent;
+		}
+	}
 	article {
 		h1 {
 			margin: 0 0 $pad-mobile / 2;
