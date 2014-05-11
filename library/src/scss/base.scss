@@ -91,8 +91,21 @@ p {
 	}
 }
 
-h1,h2,h3,h4,h5,h6 {
+h1,h2 {
 	@include font-headers;
+}
+
+h3,h4,h5,h6 {
+	@include font-standard;
+	
+}
+h3 {
+	font-size: 1.6em;
+	font-weight: 300;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	//@include font-headers;
 	color: $grey-dark;
 	line-height: 1.1em;
 	
@@ -194,4 +207,8 @@ img {
 		@include font-headers;
 		color: $grey-dim;
 	}
+}
+
+.syntaxhighlighter.nogutter {
+	margin-left: $pad-desktop / 2 !important;
 }
