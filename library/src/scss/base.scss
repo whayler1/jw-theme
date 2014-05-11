@@ -210,5 +210,9 @@ img {
 }
 
 .syntaxhighlighter.nogutter {
-	margin-left: $pad-desktop / 2 !important;
+	margin-left: $pad-mobile / 2 !important;
+	
+	@media screen and (min-width: 768px) {
+		margin-left: $pad-desktop / 2 !important;
+	}
 }
