@@ -50,18 +50,4 @@ bmConfig.options = {
 
 bmConfig.js.all = bmConfig.js.libs.concat(bmConfig.js.src);
 
-bmConfig.cssCommand = 'echo "';
-
-for(var i = 0; i < bmConfig.scss.length; i++) {
-	
-	var scss = bmConfig.scss[i];
-	
-	scss = scss.replace(srcScss, '');
-	scss = scss.replace(/\.scss/, '');
-	
-	bmConfig.cssCommand += '@import \\"' + scss + '\\";\n';
-}
-
-bmConfig.cssCommand += '" > ' + srcScss + 'imports.scss';
-
 module.exports = bmConfig;

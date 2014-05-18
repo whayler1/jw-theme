@@ -43,17 +43,28 @@ module.exports = function(grunt) {
 			}
 		},
 		
+		sass_import_compiler: {
+			main: {
+				files: {
+					'library/src/scss/imports.scss': src.scss
+				}
+			}
+		},
+		
 		watch: {
+			
 			grunt: {
 				options: {
-					reload: true
+					reload: true,
+					atBegin: true
 				},
 				files: [
 					'gruntfile.js',
 					'grunt-config.js'
 				],
 				tasks: [
-					'exit'
+					'sass_import_compiler:main',
+					'sass:src'
 				]
 			},
 			
@@ -74,16 +85,6 @@ module.exports = function(grunt) {
 			}
 		},
 		
-		shell: {
-			srcCss: {
-				options: {
-					stdout: true,
-					stderr: true
-				},
-				command: src.cssCommand
-			}
-		},
-		
 		ftpush: {
 			prod: {
 				auth: ftpKey.auth,
@@ -96,10 +97,6 @@ module.exports = function(grunt) {
 		}
 	});
 	
-	grunt.registerTask('exit', 'Just exits.', function() {
-			process.exit(0);
-	});
-	
 	grunt.registerTask('publish', [
 		'uglify:prod',
 		'ftpush:prod'
@@ -109,6 +106,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-sass');
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	grunt.loadNpmTasks('grunt-shell');
 	grunt.loadNpmTasks('grunt-ftpush');
+	grunt.loadNpmTasks('sass-import-compiler');
 };
