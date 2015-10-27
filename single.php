@@ -10,14 +10,14 @@
 
 							<header class="article-header">
 
-								<h1 class="h2 h-name" itemprop="headline"><?php the_title(); ?><span class="categories"><?php printf( __( ' &mdash; %1$s') , get_the_category_list(' , ')); ?></span></h1>
+								<h1 class="h2"><strong class="entry-title" itemprop="headline"><?php the_title(); ?></strong><span class="categories"><?php printf( __( ' &mdash; %1$s') , get_the_category_list(' , ')); ?></span></h1>
 
 							</header>
 
 							<?php if(get_post_format() === false): ?>
 							<?php $postImage = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'full' ); ?>
 
-							<img class="post-image" src="<?php echo($postImage[0]); ?>">
+							<img class="post-image" itemprop="image" src="<?php echo($postImage[0]); ?>">
 
 							<?php endif; ?>
 
@@ -26,8 +26,7 @@
 							</section>
 
 							<footer class="article-footer">
-								<div><?php printf( __( '<time class="updated" datetime="%1$s" pubdate>%2$s</time>'), get_the_time('Y-m-j'), get_the_time(get_option('date_format'))); ?>. Tagged: <?php the_tags( '<span class="tags-title">' . __( '', 'bonestheme' ) . '</span> ', ', ', '' ); ?></div>
-								<span style="display:none" class="p-name">Justin Worsdale</span>
+								<div><span class="author vcard"><span class="fn">Justin Dean Worsdale</span></span> on <span itemprop="datePublished"><?php printf( __( '<time class="updated" datetime="%1$s" pubdate>%2$s</time>'), get_the_time('Y-m-j'), get_the_time(get_option('date_format'))); ?></span>.<br>Tagged: <?php the_tags( '<span class="tags-title">' . __( '', 'bonestheme' ) . '</span> ', ', ', '' ); ?></div>
 							</footer>
 
 						</article>
